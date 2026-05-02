@@ -1,0 +1,299 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #330000;    /* çox tünd qırmızı fon */
+    color: #ffcccc;               /* açıq qırmızı mətn */
+}
+
+header {
+    background-color: #4d0000;    /* tünd qırmızı */
+    padding: 15px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(153, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    color: #cc3333;               /* canlı qırmızı */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav {
+    flex: 1;
+    text-align: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: #cc6666;               /* açıq qırmızı */
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #660000;    /* tünd qırmızı fon */
+    color: #ff9999;               /* açıq qırmızı */
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-actions input {
+    padding: 6px;
+    border: none;
+    border-radius: 3px;
+    background-color: #660000;   /* tünd qırmızı input */
+    color: #ffcccc;
+    border: 1px solid #cc3333;
+}
+
+.search-btn, .login-btn {
+    background-color: #990000;   /* canlı tünd qırmızı */
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.search-btn:hover, .login-btn:hover {
+    background-color: #cc0000;   /* daha canlı qırmızı */
+}
+
+main {
+    padding-top: 130px;
+    display: flex;
+    margin: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+aside {
+    width: 20%;
+    padding: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    cursor: pointer;
+    padding: 5px 0;
+    color: #ffcccc;
+    transition: color 0.3s;
+}
+
+ul li:hover {
+    color: #ff6666;
+}
+
+#products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-left: 70px;
+    margin-top: 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.product-card {
+    width: 200px;
+    background: #4d0000;           /* tünd qırmızı fon */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(153, 0, 0, 0.3);
+    padding: 15px;
+    text-align: center;
+    color: #ffcccc;
+    transition: box-shadow 0.3s;
+}
+
+.product-card:hover {
+    box-shadow: 0 4px 20px rgba(204, 0, 0, 0.5);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-bottom: 1px solid #cc3333;
+    padding-bottom: 10px;
+}
+
+.product-card h3 {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #ff9999;
+}
+
+.product-card .add-to-cart {
+    background: #990000;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.product-card .add-to-cart:hover {
+    background: #cc0000;
+}
+
+footer {
+    background: #4d0000;
+    color: #ffcccc;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+    color: #ff9999;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+    color: #ffcccc;
+}
+
+input[type="email"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #660000;
+    color: #ffcccc;
+    border: 1px solid #cc3333;
+}
+
+.logout {
+    background-color: #990000;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout:hover {
+    background-color: #cc0000;
+}
+
+.bir {
+    color: #ffcc00;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+#cart-btn {
+    background: none;
+    color: #cc6666;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#cart-btn:hover {
+    background: #660000;
+    border-color: #cc3333;
+}
+
+#cart-count {
+    font-weight: bold;
+    color: #cc6666;
+}
+
+#sort-options {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cc3333;
+    background-color: #660000;
+    color: #ffcccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    position: absolute;
+    top: 210px;
+    left: 220px;
+}
+
+#refreshButton {
+    background-color: #cc0000;
+    padding: 15px;
+    width: 300px;
+    border: none;
+    border-radius: 10px;
+    position: absolute;
+    top: 100px;
+    left: 230px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#refreshButton:hover {
+    background-color: #e63946;
+}
+
+#input {
+    position: absolute;
+    top: 210px;
+    left: 20px;
+    background-color: #660000;
+    color: #ffcccc;
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+}

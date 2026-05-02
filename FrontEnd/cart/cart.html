@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+
+     <header>
+        <div class="container">
+            <h1 class="logo">E-commerce</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../aboutss.html">About</a></li>
+                    <li><a href="../signUp.html">Sign Up</a></li>
+                    <li><a href="../shop/shop.html" class="shop-btn">Shop</a></li>
+                  
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <input type="text" placeholder="Search...">
+                <button class="search-btn">Search</button>
+              
+            </div>
+            
+        </div>
+    </header>
+    <section class="cart">
+        <h2>Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+          
+            </tbody>
+        </table>
+
+     
+    </section>
+
+    <div class="cart-total">
+        <h3>Cart total</h3>
+        <p>Subtotal: <span id="subtotal-price">0$</span></p>
+        <p>Shipping: <span>Free</span></p>
+        <p>Total: <span id="total-price">0$</span></p>
+    <a href="../checkOut/checkout.html"><button id="checkout">Proceed to Checkout</button></a>
+    </div>
+    <footer>
+        <div class="footer-section">
+            <h3>Exclusive</h3>
+            <p>Get 10% off your first order</p>
+            <input type="email" placeholder="Enter your email">
+        </div>
+        <div class="footer-section">
+            <h3>Support</h3>
+            <p>111 Bijoy sarani, Dhaka, Bangladesh.</p>
+            <p>exclusive@gmail.com</p>
+            <p>+88015-88888-9999</p>
+        </div>
+        <div class="footer-section">
+            <h3>Account</h3>
+            <ul>
+                <li>My Account</li>
+                <li>Login / Register</li>
+                <li>Cart</li>
+                <li>Wishlist</li>
+                <li>Shop</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Link</h3>
+            <ul>
+                <li>Privacy Policy</li>
+                <li>Terms of Use</li>
+                <li>FAQ</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Download App</h3>
+            <p>Save $3 with App New User Only</p>
+            <img src="../photos/qrcode.png" alt="QR Code" height="100px">
+        </div>
+    </footer>
+<script src="./cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məhsul Yarat</title>
+    <link rel="stylesheet" href="create.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        
+        <nav class="navbar">
+            <div class="nav-left">
+                <h2 class="logo">Exclusive</h2>
+            </div>
+          <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../aboutss.html">About</a></li>
+                    <li><a href="../signUp.html">Sign Up</a></li>
+                    <li><a href="../shop/shop.html" class="shop-btn">Shop</a></li>
+                  
+                </ul>
+            <div class="nav-right">
+                <input type="text" class="search-box" placeholder="Axtar...">
+                
+            </div>
+        </nav>
+    </nav>
+
+    <div class="container">
+        <h2 class="title">Məhsul Yarat</h2>
+        <form id="product-form">
+            <label for="brand">Brend</label>
+            <input type="text" id="brand" placeholder="Məhsulun brendi" required>
+
+            <label for="model">Model</label>
+            <input type="text" id="model" placeholder="Məhsulun modeli" required>
+
+            <label for="category">Kategoriya</label>
+            <input type="text" id="category" placeholder="Məhsulun kategoriyası" required>
+
+            <label for="description">Açıqlama</label>
+            <textarea id="description" placeholder="Məhsul haqqında məlumat"></textarea>
+
+            <label for="price">Qiymət ($)</label>
+            <input type="number" id="price" placeholder="Məhsulun qiyməti" required>
+
+            <label for="rating">Reytinq (1-5)</label>
+            <input type="number" id="rating" min="1" max="5" placeholder="Məhsulun reytinqi" required>
+
+            <label for="image-url">Şəkil URL</label>
+            <input type="text" id="image-url" placeholder="Məhsulun şəkil linki" required>
+            
+            <div class="preview">
+                <img id="preview-image" src="" alt="Şəkil Önizləmə">
+            </div>
+
+            <button type="submit" class="save-btn">Yadda Saxla</button>
+            <button type="reset" class="reset-btn">Sıfırla</button>
+        </form>
+    </div>
+
+    <script src="create.js"></script>
+</body>
+</html>

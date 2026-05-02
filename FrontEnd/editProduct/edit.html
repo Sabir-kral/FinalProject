@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məhsul Yarat</title>
+    <link rel="stylesheet" href="./edit.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        
+        <nav class="navbar">
+            <div class="nav-left">
+                <h2 class="logo">Exclusive</h2>
+            </div>
+           <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../aboutss.html">About</a></li>
+                    <li><a href="../signUp.html">Sign Up</a></li>
+                    <li><a href="../shop/shop.html" class="shop-btn">Shop</a></li>
+                  
+                </ul>
+            <div class="nav-right">
+                <input type="text" class="search-box" placeholder="Axtar...">
+                <button class="login-btn">Giriş</button>
+            </div>
+        </nav>
+    </nav>
+
+    <div class="container">
+        <h2 class="title">Məhsul Yarat</h2>
+        <form id="editProductForm">
+            <label>Brand</label>
+            <input type="text" id="brand">
+            
+            <label>Model</label>
+            <input type="text" id="model">
+            
+            <label>Category</label>
+            <input type="text" id="category">
+            
+            <label>Description</label>
+            <textarea id="description"></textarea>
+            
+            <label>Price</label>
+            <input type="number" id="price">
+            
+            <label>Rating</label>
+            <input type="number" id="rating" min="1" max="5">
+            
+            <label>Image URL</label>
+            <input type="text" id="imageUrl" oninput="document.getElementById('preview').src = this.value">
+            <img id="preview" src="" alt="Preview" width="100">
+            
+            <button style="background-color: red;" type="submit">Yadda Saxla</button>
+        </form>
+        
+    </div>
+
+    <script src="./edit.js"></script>
+</body>
+</html>
+
+

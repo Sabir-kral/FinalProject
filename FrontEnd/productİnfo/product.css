@@ -1,0 +1,216 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #330000;    /* çox tünd qırmızı fon (demək olar ki qara) */
+    color: #ffcccc;               /* açıq qırmızı, oxunaqlı mətn */
+}
+
+.top-bar {
+    background: #4d0000;          /* tünd qırmızı fon */
+    color: #ff9999;               /* açıq qırmızı mətn */
+    text-align: center;
+    padding: 5px 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: #660000;          /* qırmızı, tünd fon */
+    box-shadow: 0 2px 10px rgba(102, 0, 0, 0.8);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links {
+    padding-top: 10px;
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ff9999;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff4d4d; /* daha açıq qırmızı */
+}
+
+.shop-btn {
+    background: #990000;          /* tünd qırmızı düymə */
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.shop-btn:hover {
+    background: #cc0000;          /* daha canlı qırmızı */
+}
+
+#bir {
+    width: 400px;
+}
+
+button {
+    background: #990000;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #cc0000;
+}
+
+footer {
+    background: #4d0000;
+    color: #ff9999;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+.footer-section h3 {
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+input[type="email"] {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #660000;
+    color: #ffcccc;
+    border: 1px solid #cc0000;
+}
+
+.logout {
+    background-color: #990000;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.logout:hover {
+    background-color: #cc0000;
+}
+
+.item {
+    text-align: center;
+}
+
+.container {
+    justify-content: space-around;
+    display: flex;
+}
+
+.product-page {
+    width: 90%;
+    margin: auto;
+    background: #330000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(153, 0, 0, 0.8);
+    color: #ffcccc;
+}
+
+.product-container {
+    display: flex;
+    gap: 20px;
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.product-info {
+    flex: 1;
+}
+
+.rating {
+    color: #ff6600; /* narıncı ton */
+}
+
+.stock {
+    color: #66bb6a; /* yaşıl ton */
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff9999;
+}
+
+.description {
+    color: #ffb3b3;
+}
+
+.add-to-cart {
+    background: #990000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background: #cc0000;
+}
+
+.delivery-info {
+    margin-top: 20px;
+    background: #660000;
+    padding: 10px;
+    border-radius: 5px;
+    color: #ff9999;
+}
+
+.delivery-info a {
+    color: #cc0000;
+    text-decoration: none;
+}
+
+.delivery-info a:hover {
+    text-decoration: underline;
+}
+
+.bi {
+    font-size: 30px;
+    color: #ff9999;
+}

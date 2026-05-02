@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Products</title>
+    <link rel="stylesheet" href="products.css">
+  
+</head>
+<body>
+ <header>
+        <nav>
+            <h2>E-commerce</h2>
+            <ul>
+                <li><a href="../home/index.html">Home</a></li>
+                <li><a href="../contact/contact.html">Contact</a></li>
+                <li><a href="../about/about.html">About</a></li>
+                <li><a href="../sign/sign.html">Sign Up</a></li>
+                <li><a href="../shop/shop.html" class="shop-btn">Shop</a></li>
+            </ul>
+            <input type="text" placeholder="What are you looking for?">
+         
+        </nav>
+    </header>
+
+    <main class="admin-panel">
+        <a href="../creat/create.html"><button class="add-product-btn" > Yeni Məhsul</button></a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Brend</th>
+                    <th>Model</th>
+                    <th>Kateqoriya</th>
+                    <th>Şəkil</th>
+                    <th>Qiymət</th>
+                    <th>Reytinq</th>
+                    <th>Əməliyyatlar</th>
+                </tr>
+            </thead>
+            <tbody id="product-table">
+
+            </tbody>
+        </table>
+    </main>
+    
+    <footer>
+        <div class="footer-section">
+            <h3>Exclusive</h3>
+            <p>Get 10% off your first order</p>
+            <input type="email" placeholder="Enter your email">
+        </div>
+        <div class="footer-section">
+            <h3>Support</h3>
+            <p>111 Bijoy sarani, Dhaka, Bangladesh.</p>
+            <p>exclusive@gmail.com</p>
+            <p>+88015-88888-9999</p>
+        </div>
+        <div class="footer-section">
+            <h3>Account</h3>
+            <ul>
+                <li>My Account</li>
+                <li>Login / Register</li>
+                <li>Cart</li>
+                <li>Wishlist</li>
+                <li>Shop</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Link</h3>
+            <ul>
+                <li>Privacy Policy</li>
+                <li>Terms of Use</li>
+                <li>FAQ</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Download App</h3>
+            <p>Save $3 with App New User Only</p>
+            <img src="../photos/qrcode.png" alt="QR Code" height="100px">
+        </div>
+    </footer>
+<script src="products.js"></script>
+</body>
+</html>

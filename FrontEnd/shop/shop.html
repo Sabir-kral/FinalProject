@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 class="logo">E-commerce</h1>
+            <nav>
+            <ul class="nav-links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../aboutss.html">About</a></li>
+                    <li><a href="../signUp.html">Sign Up</a></li>
+                    <li><a href="../shop/shop.html" class="shop-btn">Shop</a></li>
+                  
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <input type="text" class="search-box" placeholder="Search...">
+                <button id="search-btn">Search</button>
+             
+                <button id="cart-btn">Basket (<span id="cart-count">0</span>)</button>
+            </div>
+        </div>
+    </header>
+    <h1 >Shop</h1>
+    <select id="sort-options">
+        <option value="default">Sort by</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="rating-high">Rating: High to Low</option>
+    </select>
+    
+    <button id="refreshButton" >All</button>
+    <input type="text" class="search-box" id="input" placeholder="Search...">
+    <main>
+      
+        
+        <aside>
+            <h2>Category</h2>
+            <ul id="category-list">
+                <li data-category="All"></li>
+            </ul>
+            
+            <h2>Rate</h2>
+            <div id="rating-filter">
+                <button class="bir" data-rating="5">★★★★★</button>
+                <br>
+                <br>
+                <button class="bir" data-rating="4">★★★★☆</button>
+                <br>
+                <br>
+                <button class="bir" data-rating="3">★★★☆☆</button>
+                <br>
+                <br>
+                <button class="bir" data-rating="2">★★☆☆☆</button>
+                <br>
+                <br>
+                <button class="bir" data-rating="1">★☆☆☆☆</button>
+            </div>
+        </aside>
+
+        <section id="products-container">
+           
+        </section>
+    </main>
+<br>
+<br>
+<br>
+<br>
+<br>
+    <footer>
+        <div class="footer-section">
+            <h3>Exclusive</h3>
+            <p>Get 10% off your first order</p>
+            <input type="email" placeholder="Enter your email">
+        </div>
+        <div class="footer-section">
+            <h3>Support</h3>
+            <p>111 Bijoy sarani, Dhaka, Bangladesh.</p>
+            <p>exclusive@gmail.com</p>
+            <p>+88015-88888-9999</p>
+        </div>
+        <div class="footer-section">
+            <h3>Account</h3>
+            <ul>
+                <li>My Account</li>
+                <li>Login / Register</li>
+                <li>Cart</li>
+                <li>Wishlist</li>
+                <li>Shop</li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Link</h3>
+            <ul>
+                <li>Privacy Policy</li>
+                <li>Terms of Use</li>
+                <li>FAQ</li>
+                <li>Contact</li>
+            </ul>
+        </div>
+    </footer>
+    
+    <script src="shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,424 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #330000;    /* çox tünd qırmızı fon (demək olar ki qara) */
+  color: #ffcccc;               /* açıq qırmızı, oxunaqlı mətn */
+}
+
+header {
+  background: #4d0000;          /* tünd qırmızı fon */
+  color: #ff9999;               /* açıq qırmızı mətn */
+  text-align: center;
+  padding: 5px 0;
+}
+nav h2{
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+display: inline;
+width: fit-content;
+
+}
+li{
+color: black;
+display: inline;
+padding: 20px;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: underline;
+}
+span{
+  text-decoration: underline;
+}
+nav h2{
+  color: white;
+}
+nav input{
+  margin-left:5vw ;
+}
+nav{
+  padding-left: 10vw;
+}
+i{
+  font-size: 1.5vw;
+  padding: 0.5vw;
+  color: white;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #660000;          /* qırmızı, tünd fon */
+  box-shadow: 0 2px 10px rgba(102, 0, 0, 0.8);
+}
+nav p{
+  color: white;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.shop-btn {
+  background: #990000;          /* tünd qırmızı düymə */
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.shop-btn:hover {
+  background: #cc0000;          /* daha canlı qırmızı */
+}
+
+#bir {
+  width: 400px;
+}
+
+button {
+  background: #990000;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: #cc0000;
+}
+
+footer {
+  background: #4d0000;
+  color: #ff9999;
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+}
+
+input[type="email"] {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #660000;
+  color: #ffcccc;
+  border: 1px solid #cc0000;
+}
+
+.logOut {
+  background-color: #990000;
+  border-radius: 5px;
+  padding: 10px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.logOut:hover {
+  background-color: #cc0000;
+}
+
+.item {
+  text-align: center;
+}
+
+.container {
+  justify-content: space-around;
+  display: flex;
+}
+
+.product-page {
+  width: 90%;
+  margin: auto;
+  background: #330000;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(153, 0, 0, 0.8);
+  color: #ffcccc;
+}
+
+.product-container {
+  display: flex;
+  gap: 20px;
+}
+
+.product-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.rating {
+  color: #ff6600; /* narıncı ton */
+}
+
+.stock {
+  color: #66bb6a; /* yaşıl ton */
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff9999;
+}
+
+.description {
+  color: #ffb3b3;
+}
+
+.add-to-cart {
+  background: #990000;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background: #cc0000;
+}
+
+.delivery-info {
+  margin-top: 20px;
+  background: #660000;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ff9999;
+}
+
+.delivery-info a {
+  color: #cc0000;
+  text-decoration: none;
+}
+
+.delivery-info a:hover {
+  text-decoration: underline;
+}
+
+.bi {
+  font-size: 30px;
+  color: #ff9999;
+}
+.emily{
+  box-shadow: 29px 28px 44px 0px rgba(0, 0, 0, 0.3);
+  width: 20vw;
+  background-color: white;
+  height: fit-content;
+  margin: 2vw;
+  position: relative;
+top: 15vw;
+}
+.sarah{
+  box-shadow: 29px 28px 44px 0px rgba(0, 0, 0, 0.3);
+  width: 20vw;
+  background-color: #E07575;
+  height: fit-content;
+  margin: 2vw;
+  position: relative;
+  left: 30vw;
+  top: 5vw;
+}
+.olivia{
+  box-shadow: 29px 28px 44px 0px rgba(0, 0, 0, 0.3);
+  width: 20vw;
+  background-color: white;
+  height: fit-content;
+  margin: 2vw;
+  position: relative;
+  left: 60vw;
+  bottom: 5vw;
+}
+.promotion{
+  background-color: rgb(255, 166, 0, 0.4);
+  width: 50vw;  
+  
+}
+.all{
+  display: flex;
+}
+.time{
+  display: flex;
+}
+.time div{
+  padding: 0.5vw;
+  background-color: white;
+  margin-left: 1vw;
+  font-size: 2vw;
+}
+.timeName{
+  display: flex;
+}
+.timeName p{
+  padding-left: 1.5vw;
+}
+.all button{
+  width: 10vw;
+  height: 8vh;
+  margin-left:2vw ;
+  background-color: black;
+}
+.img{
+  position: relative;
+  left: 70vw;
+  width: fit-content;
+  bottom: 30vw;
+}
+.iPhone{
+  background-color: #211C24;
+  width: 93vw;
+  color: white;
+  position: relative;
+  height: 60vh;
+}
+.iPhone button{
+  margin-top: 15vw;
+  margin-left: 10vw;
+  background: none;
+  border: 0.2vw white solid;
+  width: 10vw;
+  height: 5vh;
+}
+h2{
+  text-align: center;
+  color: #DB4444 !important;
+}
+.name {
+  display: none;
+}
+
+.about-section {
+  padding: 4vw 5vw;
+}
+
+.about-section h1 {
+  text-align: center;
+  margin-bottom: 2vw;
+  font-size: 2.5vw;
+  color: #DB4444;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2vw;
+}
+
+.texts {
+  flex: 1;
+  min-width: 250px;
+}
+
+.texts h2 {
+  margin-bottom: 1vw;
+  color: #DB4444;
+}
+
+.texts p {
+  margin-bottom: 1vw;
+  line-height: 1.6;
+}
+
+.imgs img {
+  max-width: 100%;
+  height: auto;
+}
+
+.team-section {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 3vw;
+  gap: 2vw;
+  flex-wrap: wrap;
+}
+
+.person {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+}
+
+.person img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 10px;
+}
+.logIn{
+  display: none;
+}
+
+footer {
+  background: #4d0000;
+  color: #ffcccc;
+  padding: 30px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+
+.footer-section h3 {
+  margin-bottom: 10px;
+  color: #ff9999;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 5px 0;
+  color: #ffcccc;
+}
+
+input[type="email"] {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #660000;
+  color: #ffcccc;
+  border: 1px solid #cc3333;
+}
+.footer-section ul{
+  display: flex;
+  flex-direction: column;
+}
+.footer-section ul li{
+  margin-bottom: 0;
+  padding: 0;
+}

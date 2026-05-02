@@ -1,0 +1,168 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #660000; /* Tünd qırmızı fon */
+    color: #f9dcdc; /* Fon üzərində oxunaqlı açıq rəng mətn */
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ background: #660000; /* Açıq tünd qırmızı navbar */
+    padding: 15px 50px;
+    color:white ;/* Tünd qırmızı rəng */
+    gap: 50px;
+    box-shadow: 0 2px 6px rgba(159, 27, 27, 0.2);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #991b1b;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    text-decoration: none;
+ color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    color: #7f1d1d;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.search-box {
+    padding: 8px;
+    border: 1px solid #b91c1c;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #ffffff;
+    color: #7f1d1d;
+}
+
+.login-btn {
+    background: #ffffff;
+    color: #991b1b;
+    padding: 8px 15px;
+    border: 1px solid #991b1b;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #f8d7da;
+}
+
+.container {
+    width: 50%;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(159, 27, 27, 0.1);
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #991b1b;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #991b1b;
+}
+
+input,
+textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #b91c1c;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #fef2f2;
+    color: #7f1d1d;
+    transition: border 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #991b1b;
+    outline: none;
+}
+
+.preview {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.preview img {
+    width: 150px;
+    height: auto;
+    display: none;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(159, 27, 27, 0.1);
+}
+
+.save-btn,
+.reset-btn {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.save-btn {
+    background: #7f1d1d; /* Tünd qırmızı (daha tünd yaşıl kimi deyil, qırmızı oldu) */
+    color: white;
+}
+
+.save-btn:hover {
+    background: #991b1b;
+}
+
+.reset-btn {
+    background: #b91c1c; /* Tünd qırmızı */
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #7f1d1d;
+}
