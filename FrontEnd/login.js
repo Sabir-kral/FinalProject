@@ -1,26 +1,35 @@
-let arr  =[]
-let form=document.querySelector("form")
-form.addEventListener("submit", (event)=>{
-event.preventDefault();
-let inputs=document.querySelectorAll("input")
-let users=JSON.parse(localStorage.getItem("users"));
-let findusers= users.find(user=> user.username==inputs[1].value&& user.password==inputs[2].value);
-let p = document.querySelector(".p2 ")
-if (findusers) {
-   p.innerText = "giris ugurludur"
-   p.style.color = "green"
-   alert("giris ugurludur")
-           window.location.href = "index.html"
-        //    arr.push(inputs[1].value)
-        //    JSON.parse(localStorage.setItem("activeUsers",arr))
-           localStorage.setItem("activeUser",JSON.stringify(findusers))
-       } else {
-           p.innerText = "user tapilmadi"
-           p.style.color = "red"
-       }
+async function login(event) {
+    event.preventDefault()
 
-inputs[1].value="";
-inputs[2].value="";
+    const username = document.getElementById("input");
+    const password = document.getElementById("inputIki");
 
+    const request = {
+        username:username.value,
+        password:password.value
+    }
+    const response = await fetch("http://localhost:8080/api/auth/login",{
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body:JSON.stringify(request)
+    });
+    const data = await response.json();
 
-})
+    if(response.ok) {
+        const userData = {
+        username: document.getElementById("input").value, 
+        accessToken: data.accessToken,
+        roles:data.roles
+    };
+    localStorage.setItem("activeUser", JSON.stringify(userData));
+        document.getElementById("result").style.color = "green";
+        document.getElementById("result").innerText = "succesfully logined";
+        setInterval(() => {
+            window.location.href = "index.html"
+        }, 3000);
+     } else{
+        document.getElementById("result").style.color = "red";
+        document.getElementById("result").innerText = data.message;
+        }
+    
+}

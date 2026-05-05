@@ -1,11 +1,8 @@
 package az.developia.demo.Entity;
 
-
 import az.developia.demo.Service.CustomUserDetailsService;
 import az.developia.demo.Utility.JwtFilter;
-import az.developia.demo.Utility.JwtFilter;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -15,26 +12,19 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true)
+@EnableMethodSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-
-//    @Value("${spring.security.username}")
-//    private String username;
-//
-//    @Value("${spring.security.password}")
-//    private String password;
 
     private final JwtFilter jwtFilter;
     private final CustomUserDetailsService userDetailsService;
@@ -42,16 +32,38 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
+                .cors(cors -> cors.configurationSource(request -> {
+                    var corsConfiguration = new CorsConfiguration();
+                    corsConfiguration.setAllowedOrigins(List.of("http://127.0.0.1:5501")); // Sənin front-end ünvanın
+                    corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+                    corsConfiguration.setAllowedHeaders(List.of("*"));
+                    return corsConfiguration;
+                }))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/customers/**").permitAll()
+                        .requestMatchers("/api/customers/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+
+                        .requestMatchers(HttpMethod.GET, "/api/products/all").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/products/search").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/contact/send").permitAll()
+
+                        .requestMatchers(HttpMethod.GET, "/api/contact/all").hasAuthority("ROLE_ADMIN")
+                        .requestMatchers("/api/customers/admin/**").hasAuthority("ROLE_ADMIN")
+
+                        .requestMatchers("/api/campaigns/**").hasAuthority("ROLE_SELLER")
+                        .requestMatchers("/api/categories/**").hasAuthority("ROLE_SELLER")
+                        .requestMatchers(HttpMethod.POST, "/api/products/add").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAuthority("ROLE_SELLER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAuthority("ROLE_SELLER")
+
                         .requestMatchers(permitAllUrls).permitAll()
-                        //  .requestMatchers(HttpMethod.GET, "/api/students/profile").hasAuthority("ROLE_GET_PROFILE")
                         .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .userDetailsService(userDetailsService);
+
         http.addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
-        http.headers().frameOptions().disable();
+        http.headers(headers -> headers.frameOptions(frame -> frame.disable()));
+
         return http.build();
     }
 

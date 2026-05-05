@@ -5,24 +5,20 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
-@Table(name = "customers")
+@Table(name = "categories")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerEntity {
+public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
-    private String surname;
-    private String email;
-    private String username;
-    private String password;
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity user;
-
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductEntity> products;
 }

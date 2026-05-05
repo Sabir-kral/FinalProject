@@ -35,12 +35,12 @@ public class AuthController {
             throw new RuntimeException("Daxil edilen melumatlar yanlisdir");
         }
 
-        UserEntity users = userRepo.findByUsername(request.getUsername());
+        UserEntity users = userRepo.findByUsername(request.getUsername()).orElseThrow(()->new RuntimeException("Not Found"));
 
         UserDetails user = userDetailsService.loadUserByUsername(request.getUsername());
         String accessToken = jwtUtil.generateAccessToken(user);
         String refreshToken = jwtUtil.generateRefreshToken(user);
 
-        return new LoginResponse(users.getId(), accessToken,request.getPassword());
+        return new LoginResponse(users.getId(), accessToken,request.getUsername(),users.getRoles());
     }
 }

@@ -21,4 +21,5 @@ public class RoleEntity {
 
     private Integer customer;
     private Integer admin;
+    private Integer seller;
 }

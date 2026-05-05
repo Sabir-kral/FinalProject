@@ -36,6 +36,28 @@ span{
 nav h2{
   color: white;
 }
+.admin-btn {
+    background-color: #db4444; /* Netflix qırmızısı tərzi */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin-right: 10px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.admin-btn:hover {
+    background-color: #b22222;
+}
+
+/* Nav elementlərinin düzgün hizalanması üçün */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
 nav input{
   margin-left:5vw ;
 }

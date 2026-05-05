@@ -1,21 +1,34 @@
-    let form = document.querySelector(".f")
-let users = JSON.parse(localStorage.getItem("users"))||[];
-form.addEventListener("submit",(event)=>{
+
+async function signUp(event) {
     event.preventDefault()
-let input1 = document.querySelector("#input")
-let input2 = document.querySelector("#inputIki")
-let input3 = document.querySelector("#inputUc")
-let input4 = document.querySelector("#inputDord")
-let input5 = document.querySelector("#inputBes")
-    let object = {
-        name:input1.value,
-        surname:input2.value,
-        email:input3.value,
-        username:input4.value,
-        password:input5.value
+    const name = document.getElementById("input");
+    const surname = document.getElementById("inputIki");
+    const email = document.getElementById("inputUc");
+    const username = document.getElementById("inputDord");
+    const password = document.getElementById("inputBes");
+
+    const request = {
+        name:name.value,
+        surname:surname.value,
+        email:email.value,
+        username:username.value,
+        password:password.value,
     }
-    users.push(object)
-    localStorage.setItem("users",JSON.stringify(users))
+    const response = await fetch("http://localhost:8080/api/customers/register",{
+        method:"POST",
+        headers: {"Content-Type":"application/json"},
+        body:JSON.stringify(request)
+    });
 
-
-})/* RESET */
+    const data = await response.json();
+    if (response.ok){
+        document.getElementById("result").style.color = "green";
+        document.getElementById("result").innerText = "succesfully registered";
+        setInterval(() => {
+            window.location.href = "login.html"
+        }, 2000);
+    } else{
+        document.getElementById("result").style.color = "red";
+        document.getElementById("result").innerText = "error"||data.message;
+    }
+}
