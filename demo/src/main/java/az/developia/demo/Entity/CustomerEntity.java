@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "customers")
@@ -23,6 +24,7 @@ public class CustomerEntity {
 
     @OneToOne
     @JoinColumn(name = "user_id")
+    @ToString.Exclude
     private UserEntity user;
 
 }

@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (cart.length === 0) {
         alert("Your cart is empty. Please add products before checkout.");
-        window.location.href = "shop.html";
+        window.location.href = "../shop/shop.html";
         return;
     }
 

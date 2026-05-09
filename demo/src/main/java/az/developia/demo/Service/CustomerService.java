@@ -26,7 +26,7 @@ public class CustomerService {
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
 
-    @Transactional // Bu mütləqdir! Error olsa hər şeyi geri qaytarır.
+    @Transactional 
     public CustomerResponse register(CustomerRequest request) {
 
         userService.isUserExists(request.getUsername());

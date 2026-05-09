@@ -1,86 +1,68 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const productForm = document.getElementById("product-form");
-    const previewImage = document.getElementById("preview-image");
-    const imageUrlInput = document.getElementById("image-url");
+function previewImage(event) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const output = document.getElementById('preview-image');
+        if (output) {
+            output.src = reader.result;
+            output.style.display = 'block';
+        }
+    };
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    }
+}
 
-    let user = JSON.parse(localStorage.getItem("activeUser"));
+async function create(event) {
+    event.preventDefault();
+    const fileInput = document.getElementById("image-file");
+    const resultDiv = document.getElementById("result");
 
-    if (!user) {
-        alert("İstifadəçi daxil olmayıb!");
+    if (!fileInput || fileInput.files.length === 0) {
+        alert("Zəhmət olmasa şəkil seçin!");
         return;
     }
 
-    let userProductsKey = `products_${user.username}`;
-    let allProductsKey = "products";
+    try {
+        resultDiv.innerText = "Yüklənir...";
+        
 
-    let userProducts = JSON.parse(localStorage.getItem(userProductsKey)) || [];
-    let allProducts = JSON.parse(localStorage.getItem(allProductsKey)) || [];
-    imageUrlInput.addEventListener("input", () => {
-        const url = imageUrlInput.value;
-        if (url) {
-            previewImage.src = url;
-            previewImage.style.display = "block";
-        } else {
-            previewImage.style.display = "none";
-        }
-    });
-    const inputs = productForm.querySelectorAll("input[required], textarea[required], select[required]");
-    inputs.forEach(input => {
-        input.addEventListener("input", () => {
-            updateInputBorder(input);
-        });
-        updateInputBorder(input);
-    });
+        const formData = new FormData();
+        formData.append("file", fileInput.files[0]);
 
-    function updateInputBorder(input) {
-        if (input.checkValidity()) {
-            input.style.border = "2px solid green";
-        } else {
-            input.style.border = "2px solid red";
-        }
-    }
-    productForm.addEventListener("submit", function (event) {
-        event.preventDefault();
-
-        let allValid = true;
-
-        inputs.forEach(input => {
-            updateInputBorder(input);
-            if (!input.checkValidity()) {
-                allValid = false;
-            }
+        const fileResponse = await fetch("http://localhost:8080/api/files/upload", {
+            method: "POST",
+            body: formData
         });
 
-        if (!allValid) {
-            alert("Zəhmət olmasa, bütün sahələri düzgün doldurun.");
-            return;
-        }
+        if (!fileResponse.ok) throw new Error("Şəkil yüklənə bilmədi.");
+        const uploadedImageName = await fileResponse.text();
 
-        const newProduct = {
-            id: allProducts.length + 1,
+
+        const requestData = {
             brand: document.getElementById("brand").value,
             model: document.getElementById("model").value,
-            category: document.getElementById("category").value,
             description: document.getElementById("description").value,
-            price: document.getElementById("price").value,
-            rating: document.getElementById("rating").value,
-            image: document.getElementById("image-url").value,
-            owner: user.username
+            price: parseFloat(document.getElementById("price").value) || 0,
+            rating: parseInt(document.getElementById("rating").value) || 0,
+            categoryName: document.getElementById("category").value,
+            image: uploadedImageName 
         };
-        const newProduct1 = { ...newProduct, id: userProducts.length + 1 };
 
-        userProducts.push(newProduct1);
-        localStorage.setItem(userProductsKey, JSON.stringify(userProducts));
+        const response = await fetch("http://localhost:8080/api/products/add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(requestData)
+        });
 
-        allProducts.push(newProduct);
-        localStorage.setItem(allProductsKey, JSON.stringify(allProducts));
-
-        alert("Məhsul uğurla əlavə olundu!");
-        productForm.reset();
-        previewImage.style.display = "none";
-        inputs.forEach(input => updateInputBorder(input));
-        window.location.href = "../products.html"
-    });
-});
-
-
+        if (response.ok) {
+            alert("Məhsul uğurla əlavə edildi!");
+            window.location.href = "../shop/shop.html";
+        } else {
+            const err = await response.text();
+            alert("Xəta: " + err);
+        }
+    } catch (error) {
+        resultDiv.style.color = "red";
+        resultDiv.innerText = error.message;
+    }
+}

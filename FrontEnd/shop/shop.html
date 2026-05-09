@@ -25,17 +25,16 @@
                 <input type="text" class="search-box" placeholder="Search...">
                 <button id="search-btn">Search</button>
              
-                <button id="cart-btn">Basket (<span id="cart-count">0</span>)</button>
+                <button id="cart-btn" onclick="open()">Basket (<span id="cart-count">0</span>)</button>
             </div>
         </div>
     </header>
     <h1 >Shop</h1>
-    <select id="sort-options">
-        <option value="default">Sort by</option>
-        <option value="price-low">Price: Low to High</option>
-        <option value="price-high">Price: High to Low</option>
-        <option value="rating-high">Rating: High to Low</option>
-    </select>
+<select id="sort-select">
+    <option value="default">Default</option>
+    <option value="price_asc">Price: Low to High</option>
+    <option value="price_desc">Price: High to Low</option>
+</select>   
     
     <button id="refreshButton" >All</button>
     <input type="text" class="search-box" id="input" placeholder="Search...">
@@ -44,26 +43,18 @@
         
         <aside>
             <h2>Category</h2>
-            <ul id="category-list">
-                <li data-category="All"></li>
-            </ul>
+<ul id="category-list">
+    <li data-category="all" class="active">All Categories</li>
+</ul>
             
             <h2>Rate</h2>
             <div id="rating-filter">
-                <button class="bir" data-rating="5">★★★★★</button>
-                <br>
-                <br>
-                <button class="bir" data-rating="4">★★★★☆</button>
-                <br>
-                <br>
-                <button class="bir" data-rating="3">★★★☆☆</button>
-                <br>
-                <br>
-                <button class="bir" data-rating="2">★★☆☆☆</button>
-                <br>
-                <br>
-                <button class="bir" data-rating="1">★☆☆☆☆</button>
-            </div>
+    <button class="rate-item" data-rate="5">★★★★★</button><br><br>
+    <button class="rate-item" data-rate="4">★★★★☆</button><br><br>
+    <button class="rate-item" data-rate="3">★★★☆☆</button><br><br>
+    <button class="rate-item" data-rate="2">★★☆☆☆</button><br><br>
+    <button class="rate-item" data-rate="1">★☆☆☆☆</button>
+</div>
         </aside>
 
         <section id="products-container">

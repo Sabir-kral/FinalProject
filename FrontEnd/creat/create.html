@@ -50,14 +50,18 @@
             <label for="rating">Reytinq (1-5)</label>
             <input type="number" id="rating" min="1" max="5" placeholder="Məhsulun reytinqi" required>
 
-            <label for="image-url">Şəkil URL</label>
-            <input type="text" id="image-url" placeholder="Məhsulun şəkil linki" required>
-            
-            <div class="preview">
-                <img id="preview-image" src="" alt="Şəkil Önizləmə">
-            </div>
 
-            <button type="submit" class="save-btn">Yadda Saxla</button>
+<label for="image-file">Məhsul Şəkli</label>
+<!-- ID dəyişdi və type="file" oldu -->
+<input type="file" id="image-file" accept="image/*" required onchange="previewImage(event)">            
+
+<div class="preview">
+    <!-- Seçilən şəkil burada görünüb-görünməməsi üçün style əlavə edildi -->
+    <img id="preview-image" src="" alt="Şəkil Önizləmə" style="max-width: 200px; display: none;">
+</div>
+<div id="result"></div>
+
+            <button type="submit" class="save-btn" onclick="create(event)">Yadda Saxla</button>
             <button type="reset" class="reset-btn">Sıfırla</button>
         </form>
     </div>

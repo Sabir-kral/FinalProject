@@ -12,16 +12,30 @@ public class ProductMapper {
     public static ProductResponse toDTO(ProductEntity entity) {
         ProductResponse response = new ProductResponse();
         response.setId(entity.getId());
-        response.setName(entity.getName());
-        response.setDescription(entity.getDescription());
+
+
         response.setBrand(entity.getBrand());
+        response.setModel(entity.getModel());
+
+
+        String combinedName = (entity.getBrand() != null ? entity.getBrand() : "") +
+                " " +
+                (entity.getModel() != null ? entity.getModel() : "");
+        response.setName(combinedName.trim());
+
+        response.setDescription(entity.getDescription());
+        response.setRating(entity.getRating());
         response.setPrice(entity.getPrice());
         response.setDiscountRate(entity.getDiscountRate());
         response.setStockCount(entity.getStockCount());
-        response.setDiscountedPrice(entity.DiscountedPrice());
+
         if (entity.getCategory() != null) {
             response.setCategoryName(entity.getCategory().getName());
         }
+
+
+        // Məsələn: response.setImage("http://localhost:8080/api/files/download/" + entity.getImage());
+        response.setImage(entity.getImage());
 
         return response;
     }

@@ -4,36 +4,40 @@ document.addEventListener("DOMContentLoaded", function () {
     let user = JSON.parse(localStorage.getItem("activeUser"));
     if (!user) {
         alert("İstifadəçi daxil olmayıb!");
-        // window.location.href = "login.html";
+        
         return;
     }
 
-    let userProductsKey = `products_${user.username}`;
-    let productList = JSON.parse(localStorage.getItem(userProductsKey)) || [];
-    let products = JSON.parse(localStorage.getItem("products")) ;
 
-    function renderProducts() {
+
+    async function renderProducts() {
         productTable.innerHTML = ""; 
+        const user = localStorage.getItem("activeUser")
+        const token = JSON.parse(user)?.accessToken;
+        const response = await fetch("http://localhost:8080/api/products/my-products",{
+            headers:{"Authorization": "Bearer " + token}
+        })
 
-        productList.forEach((product) => {
-            const row = document.createElement("tr");
 
-            row.innerHTML = `
-                <td>${product.id}</td>
-                <td>${product.brand}</td>
-                <td>${product.model}</td>
-                <td>${product.category}</td>
-                <td><img src="${product.image}" width="50"></td>
-                <td>${product.price} $</td>
-                <td>${product.rating}/5</td>
+            const data = await response.json();
+            document.getElementById("products").innerHTML = data.map(d=>{
+                    `
+                <td>ID:${d.id}</td>
+                <td>Brend:${d.brand}</td>
+                <td>Model:${d.model}</td>
+                <td>Kateqoriya:${d.category}</td>
+                <td>Şəkil:<img src="${d.image}" width="50"></td>
+                <td>Qiymət:${d.price} $</td>
+                <td>Reytinq:${d.rating}/5</td>
+                <td>Əməliyyatlar:</td>
                 <td>
-                    <button class="edit-btn" data-id="${product.id}">Redaktə</button>
-                    <button class="delete-btn" data-id="${product.id}">Sil</button>
+                    <button class="edit-btn" data-id="${d.id}">Redaktə</button>
+                    <button class="delete-btn" data-id="${d.id}">Sil</button>
                 </td>
-            `;
+            `
+            }).join("") 
 
-            productTable.appendChild(row);
-        });
+
 
         document.querySelectorAll(".delete-btn").forEach((button) => {
             button.addEventListener("click", function () {

@@ -2,8 +2,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #660000; /* tünd qırmızı fon */
-    color: #ffcccc; /* açıq mətn */
+    background-color: #660000; 
+    color: #ffcccc; 
 }
 
 header {
@@ -65,7 +65,7 @@ nav {
 }
 
 .nav-links a:hover {
-    background-color: #b22222; /* tünd qırmızı hover */
+    background-color: #b22222; 
 }
 
 .user-actions {

@@ -8,9 +8,14 @@ import az.developia.demo.Request.ProductRequest;
 import az.developia.demo.Response.ProductResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Sort;
 
+import org.springframework.data.jpa.domain.Specification;
+import jakarta.persistence.criteria.Predicate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,74 +28,111 @@ public class ProductService {
 
     @Transactional
     public ProductResponse addProduct(ProductRequest request) {
+        System.out.println("Gələn məlumat: " + request.getBrand());
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity user = userRepo.findByUsername(username)
-                .orElseThrow(() -> new CustomException("User not logined", "Bad request", 400));
+                .orElseThrow(() -> new CustomException("İstifadəçi tapılmadı", "Bad request", 400));
 
+        
         ProductEntity productEntity = new ProductEntity();
-        mapRequestToEntity(request, productEntity);
+        productEntity.setBrand(request.getBrand());
+        productEntity.setModel(request.getModel()); 
+        productEntity.setDescription(request.getDescription());
+        productEntity.setPrice(request.getPrice());
+        productEntity.setRating(request.getRating());
+        productEntity.setImage(request.getImage());
+        productEntity.setUser(user);
 
+
+        if (request.getCategoryName() != null) {
+            CategoryEntity category = categoryRepo.findByNameIgnoreCase(request.getCategoryName())
+                    .orElseGet(() -> {
+                        CategoryEntity newCategory = new CategoryEntity();
+                        newCategory.setName(request.getCategoryName());
+                        return categoryRepo.save(newCategory);
+                    });
+
+        }
+        
         productRepo.save(productEntity);
+        ProductEntity saved = productRepo.save(productEntity);
+        System.out.println("Məhsul bazaya yazıldı, ID: " + saved.getId());
 
-        boolean isAlreadySeller = false;
-        for (RoleEntity role : user.getRoles()) {
-            if (role.getName().equals("ROLE_SELLER")) {
-                isAlreadySeller = true;
-                break;
-            }
-        }
-
+        
+        boolean isAlreadySeller = user.getRoles().stream()
+                .anyMatch(role -> role.getName().equals("ROLE_SELLER"));
         if (!isAlreadySeller) {
             roleRepo.assignSellerRoles(user.getId());
         }
-
-        if (!isAlreadySeller) {
-            roleRepo.assignSellerRoles(user.getId());
-        }
+        productRepo.save(productEntity);
+        System.out.println("succesfully saved"+productEntity);
 
         return ProductMapper.toDTO(productEntity);
     }
-    @Transactional
-    public ProductResponse updateProduct(Long id, ProductRequest request) {
-        ProductEntity productEntity = productRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
 
-        mapRequestToEntity(request, productEntity);
-
-        return ProductMapper.toDTO(productRepo.save(productEntity));
-    }
-
-    public void deleteProduct(Long id) {
-        ProductEntity product = productRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
-        productRepo.delete(product);
+//    public List<ProductEntity> getFilteredProducts(String name, String category, Integer rating,
+//                                                   Double minPrice, Double maxPrice, String sortType) {
+//
+//
+//        String searchName = (name == null || name.isBlank()) ? null : name;
+//        String searchCat = (category == null || category.isBlank() || category.equals("all")) ? null : category;
+//
+//
+//        Sort sort;
+//        switch (sortType) {
+//            case "price_asc":
+//                sort = Sort.by(Sort.Direction.ASC, "price");
+//                break;
+//            case "price_desc":
+//                sort = Sort.by(Sort.Direction.DESC, "price");
+//                break;
+//            case "rating_desc":
+//                sort = Sort.by(Sort.Direction.DESC, "rating");
+//                break;
+//            default:
+//
+//                break;
+//        }
+//
+//        return productRepo.searchProducts(searchName, searchCat, rating, minPrice, maxPrice, sort);
+//    }
+    public List<ProductResponse> getProductsByLoggedInUser() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return ProductMapper.toDTOList(productRepo.findByUserUsername(username));
     }
 
     public List<ProductResponse> getAllProducts() {
         return ProductMapper.toDTOList(productRepo.findAll());
     }
 
-    public List<ProductResponse> searchProducts(String name, String category, Double minPrice, Double maxPrice) {
-        if (name == null && category == null && minPrice == null && maxPrice == null) {
-            return getAllProducts();
-        }
+    public ProductResponse findById(Long id) {
+        ProductEntity product = productRepo.findById(id).orElseThrow(() -> new RuntimeException("Tapılmadı"));
+        return ProductMapper.toDTO(product);
+    }
 
-        List<ProductEntity> products = productRepo.searchProducts(
-                name != null ? name : "",
-                category,
-                minPrice,
-                maxPrice
-        );
-        return ProductMapper.toDTOList(products);
+
+
+    @Transactional
+    public ProductResponse updateProduct(Long id, ProductRequest request) {
+        ProductEntity productEntity = productRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Məhsul tapılmadı"));
+        mapRequestToEntity(request, productEntity);
+        productEntity.setImage(request.getImage());
+        return ProductMapper.toDTO(productRepo.save(productEntity));
+    }
+
+    public void deleteProduct(Long id) {
+        ProductEntity product = productRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Məhsul tapılmadı"));
+        productRepo.delete(product);
     }
 
     private void mapRequestToEntity(ProductRequest request, ProductEntity productEntity) {
-        productEntity.setName(request.getName());
-        productEntity.setDescription(request.getDescription());
         productEntity.setBrand(request.getBrand());
+        productEntity.setModel(request.getModel());
+        productEntity.setDescription(request.getDescription());
+        productEntity.setRating(request.getRating());
         productEntity.setPrice(request.getPrice());
-        productEntity.setDiscountRate(request.getDiscountRate());
-        productEntity.setStockCount(request.getStockCount());
 
         if (request.getCategoryName() != null && !request.getCategoryName().isEmpty()) {
             CategoryEntity category = categoryRepo.findByNameIgnoreCase(request.getCategoryName())

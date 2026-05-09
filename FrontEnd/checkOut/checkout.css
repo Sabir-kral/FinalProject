@@ -1,35 +1,35 @@
-/* GLOBAL */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    color: #fff; /* Ağ rəng */
+    color: #fff; 
 }
 
 body {
-    background-color: #8B0000; /* Tünd qırmızı */
-    color: #fff; /* Ağ rəng */
+    background-color: #8B0000; 
+    color: #fff; 
     line-height: 1.6;
 }
 
-/* HEADER */
+
 header {
-    background-color: #B22222; /* Al qırmızı */
+    background-color: #B22222; 
     padding: 15px 0;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     color: #fff;
 }
 
-/* NAVBAR */
+
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff; /* Ağ fonda */
+    background-color: #fff; 
     padding: 10px 30px;
-    color: #B22222; /* Qırmızı */
+    color: #B22222; 
     border-radius: 10px;
 }
 
@@ -72,7 +72,7 @@ nav h2, .logo {
     background-color: #800000;
 }
 
-/* USER ACTIONS */
+
 .user-actions input, .nav-links input {
     padding: 6px 10px;
     border: 1px solid #B22222;
@@ -96,14 +96,14 @@ nav h2, .logo {
 }
 
 .logout {
-    background-color: #ff4d4d; /* Açıq qırmızı */
+    background-color: #ff4d4d; 
 }
 
 .logout:hover {
     background-color: #cc0000;
 }
 
-/* CART */
+
 .cart {
     width: 80%;
     margin: 20px auto;
@@ -154,7 +154,7 @@ img {
     background-color: #800000;
 }
 
-/* CHECKOUT */
+
 .checkout-container {
     display: flex;
     justify-content: space-between;
@@ -228,7 +228,7 @@ form input, form select {
     background-color: #800000;
 }
 
-/* FOOTER */
+
 footer {
     background: #B22222;
     color: white;

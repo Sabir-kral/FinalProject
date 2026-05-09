@@ -1,17 +1,17 @@
-/* Ümumi Ayarlar */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #2a0a0a; /* çox tünd qırmızı-qara fon */
-    color: #f2dede; /* açıq qırmızı-ağ mətn */
+    background-color: #2a0a0a; 
+    color: #f2dede; 
     overflow-x: hidden;
 }
 
-/* Header və Navigasiya */
+
 header, nav {
-    background-color: #4a0f0f; /* tünd qırmızı fon */
+    background-color: #4a0f0f; 
     color: #f2dede;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
 }
@@ -38,7 +38,7 @@ header {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #f2b8b8; /* açıq tünd qırmızı */
+    color: #f2b8b8; 
 }
 
 nav {
@@ -76,13 +76,13 @@ nav h2 {
 }
 
 .nav-links a:hover, nav ul li a:hover {
-    background-color: #7a1a1a; /* orta tünd qırmızı hover */
+    background-color: #7a1a1a; 
     color: #fff0f0;
 }
 
-/* Butonlar */
+
 .add-product-btn {
-    background-color: #a33030; /* canlı tünd qırmızı */
+    background-color: #a33030; 
     color: white;
     padding: 10px 15px;
     border: none;
@@ -93,7 +93,7 @@ nav h2 {
 }
 
 .add-product-btn:hover {
-    background-color: #7a1a1a; /* daha tünd qırmızı */
+    background-color: #7a1a1a; 
 }
 
 .shop-btn {
@@ -125,18 +125,18 @@ nav h2 {
     background-color: #610000;
 }
 
-/* Admin Panel */
+
 .admin-panel {
     max-width: 1100px;
     margin: 100px auto 0 auto;
-    background: #3e0d0d; /* tünd qırmızı panel */
+    background: #3e0d0d; 
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(163, 38, 38, 0.8);
     color: #f2dede;
 }
 
-/* Tablo */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -150,7 +150,7 @@ th, td {
 }
 
 th {
-    background-color: #7a1a1a; /* orta tünd qırmızı başlıq */
+    background-color: #7a1a1a; 
     color: #fff0f0;
 }
 
@@ -160,7 +160,7 @@ td img {
     border-radius: 5px;
 }
 
-/* Düymələr (Edit, Delete) */
+
 .edit-btn, .delete-btn {
     border: none;
     padding: 8px 12px;
@@ -171,7 +171,7 @@ td img {
 }
 
 .edit-btn {
-    background-color: #339933; /* tünd yaşıl */
+    background-color: #339933; 
 }
 
 .edit-btn:hover {
@@ -179,14 +179,14 @@ td img {
 }
 
 .delete-btn {
-    background-color: #b22222; /* tünd qırmızı */
+    background-color: #b22222; 
 }
 
 .delete-btn:hover {
     background-color: #800000;
 }
 
-/* Footer */
+
 footer {
     background-color: #4a0f0f;
     color: #f2dede;
@@ -266,7 +266,7 @@ input[type="email"], .footer-section input {
     margin-top: 20px;
 }
 
-/* Ümumi link ayarı */
+
 a {
     text-decoration: none;
     color: #f2dede;
@@ -277,4 +277,4 @@ a:hover {
     color: #fff0f0;
 }
 
-/* Lazım gəlsə əlavə xüsusi siniflər */
+

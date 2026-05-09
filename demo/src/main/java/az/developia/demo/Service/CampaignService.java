@@ -14,7 +14,7 @@ public class CampaignService {
 
     @Transactional
     public void applyCampaignToCategoryName(String categoryName, Double rate) {
-        List<ProductEntity> products = productRepo.findByCategoryNameIgnoreCase(categoryName);
+        List<ProductEntity> products = productRepo.findByCategory_NameIgnoreCase(categoryName);
         if (products.isEmpty()) {
             throw new RuntimeException("Bu adda kateqoriya və ya məhsul tapılmadı: " + categoryName);
         }

@@ -1,39 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let product = JSON.parse(localStorage.getItem("product-about"));
-
-    if (!product) {
-        alert("No product found!");
-        window.location.href = "index.html"; 
+document.addEventListener("DOMContentLoaded", async function () {
+    const productId = localStorage.getItem("selectedProductId");
+    if (!productId) {
+        window.location.href = "../shop/shop.html";
         return;
     }
 
-    document.querySelector(".product-image img").src = product.image;
-    document.querySelector(".product-image img").alt = product.model;
-    document.querySelector(".product-info h2").innerText = `${product.brand} ${product.model}`;
-    document.querySelector(".rating").innerHTML = `⭐⭐⭐⭐☆ (${product.rating} Reviews) | <span class="stock">In Stock</span>`;
-    document.querySelector(".price").innerText = `$${product.price}`;
-    document.querySelector(".description").innerText = product.description;
+    try {
+        const response = await fetch(`http://localhost:8080/api/products/${productId}`);
+        if (!response.ok) throw new Error("Məhsul tapılmadı");
+        const p = await response.json();
 
-    document.querySelector(".add-to-cart").addEventListener("click", function () {
-        let user = JSON.parse(localStorage.getItem("users"));
-        if (!user) {
-            alert("Please log in first!");
-            window.open("./login.html")
-            return;
-        }
-
-        let cartKey = `cart_${user.username}`;
-        let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
-        let existingProduct = cart.find(item => item.model === product.model);
-        if (existingProduct) {
-            existingProduct.quantity += 1;
-        } else {
-            product.quantity = 1;
-            cart.push(product);
-        }
-
-        localStorage.setItem(cartKey, JSON.stringify(cart));
-        alert("Product added to cart!");
-    });
+        document.getElementById("bir").src = p.image && p.image !== "string" 
+            ? `http://localhost:8080/uploads/${p.image}` 
+            : "https://placehold.co/400x400";
+        
+        document.querySelector(".product-info h2").innerText = `${p.brand} ${p.model}`;
+        document.querySelector(".price").innerText = `${p.price} AZN`;
+        document.querySelector(".description").innerText = p.description || "Məlumat yoxdur.";
+        
+    } catch (error) {
+        console.error(error);
+        alert("Məhsul yüklənərkən xəta oldu.");
+    }
 });

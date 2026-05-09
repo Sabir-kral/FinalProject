@@ -1,8 +1,8 @@
 package az.developia.demo.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -14,17 +14,29 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
+
     private String brand;
+    private String model;
+    private String description;
     private Double price;
+    private Integer rating;
     private Double discountRate;
     private Integer stockCount;
 
+    
+    private String image;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonIgnore
     private CategoryEntity category;
 
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
+    
     public Double DiscountedPrice() {
         if (this.discountRate == null || this.discountRate <= 0) {
             return this.price;

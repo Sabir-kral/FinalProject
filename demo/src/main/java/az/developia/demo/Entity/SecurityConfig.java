@@ -34,30 +34,37 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfiguration = new CorsConfiguration();
-                    corsConfiguration.setAllowedOrigins(List.of("http://127.0.0.1:5501")); // Sənin front-end ünvanın
+                    corsConfiguration.setAllowedOrigins(List.of("http://127.0.0.1:5501"));
                     corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     corsConfiguration.setAllowedHeaders(List.of("*"));
+                    corsConfiguration.setAllowCredentials(true);
                     return corsConfiguration;
                 }))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/customers/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
 
-                        .requestMatchers(HttpMethod.GET, "/api/products/all").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/products/search").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/contact/send").permitAll()
+                        .requestMatchers("/api/auth/login", "/api/customers/register").permitAll()
+
+
+                        .requestMatchers("/api/files/**", "/images/**", "/static/**").permitAll()
+                        .requestMatchers(permitAllUrls).permitAll()
+
 
                         .requestMatchers(HttpMethod.GET, "/api/contact/all").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/api/customers/admin/**").hasAuthority("ROLE_ADMIN")
 
+
                         .requestMatchers("/api/campaigns/**").hasAuthority("ROLE_SELLER")
-                        .requestMatchers("/api/categories/**").hasAuthority("ROLE_SELLER")
-                        .requestMatchers(HttpMethod.POST, "/api/products/add").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAuthority("ROLE_SELLER")
                         .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAuthority("ROLE_SELLER")
+                        .requestMatchers(HttpMethod.GET, "/api/products/my-products").hasAuthority("ROLE_SELLER")
 
-                        .requestMatchers(permitAllUrls).permitAll()
+
+                        .requestMatchers(HttpMethod.POST, "/api/contact/send").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/products/add").permitAll()
+
+
                         .anyRequest().authenticated())
+
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .userDetailsService(userDetailsService);
 
@@ -73,15 +80,9 @@ public class SecurityConfig {
     }
 
     static String[] permitAllUrls = {
-            "/v2/api-docs",
-            "/v3/api-docs",
-            "/v3/api-docs/**",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/swagger-ui/**",
-            "/swagger-ui.html",
-            "/h2-console/**"
+            "/v2/api-docs", "/v3/api-docs", "/v3/api-docs/**",
+            "/swagger-resources", "/swagger-resources/**",
+            "/configuration/ui", "/swagger-ui/**", "/swagger-ui.html", "/h2-console/**"
     };
 
     @Bean

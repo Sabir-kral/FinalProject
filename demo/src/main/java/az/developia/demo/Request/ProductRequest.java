@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class ProductRequest {
-    private String name;
-    private String description;
     private String brand;
+    private String model;
+    private String description;
     private Double price;
-    private Double discountRate;
-    private Integer stockCount;
+    private Integer rating;
     private String categoryName;
+    private String image;
 }

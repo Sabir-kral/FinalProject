@@ -8,6 +8,8 @@ import az.developia.demo.Response.CategoryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class CategoryService {
@@ -32,5 +34,8 @@ public class CategoryService {
         cat.setName(details.getName());
         repository.save(cat);
         return CategoryMapper.toDTO(cat);
+    }
+    public List<CategoryResponse> getAll(){
+        return CategoryMapper.toDTOList(repository.findAll());
     }
 }

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/categories")
@@ -15,6 +17,13 @@ import org.springframework.web.bind.annotation.*;
 
 public class CategoryController {
     private final CategoryService categoryService;
+
+
+
+    @GetMapping
+    public List<CategoryResponse> getAll() {
+        return categoryService.getAll();
+    }
 
 
     @PutMapping("/{name}")

@@ -1,4 +1,4 @@
-// Səhifə yüklənəndə UI-ı yenilə
+
 window.onload = () => {
     updateUI();
 };
@@ -10,7 +10,7 @@ function updateUI() {
     const logInBtn = document.querySelector(".logIn");
     const logOutBtn = document.querySelector(".logOut");
     
-    // Admin butonu üçün nav daxilində yer açırıq
+    
     const nav = document.querySelector("nav");
     let adminBtn = document.getElementById("adminPanelBtn");
 
@@ -21,8 +21,8 @@ function updateUI() {
         logOutBtn.style.display = "inline";
         logInBtn.style.display = "none";
 
-        // ROL YOXLAMASI: Əgər istifadəçi admindirsə butonu göstər
-        // Qeyd: Backend-dən gələn data-da 'roles' massivi olmalıdır
+        
+        
         if (user.roles && user.roles.includes("ROLE_ADMIN")) {
             if (!adminBtn) {
                 adminBtn = document.createElement("button");
@@ -30,7 +30,7 @@ function updateUI() {
                 adminBtn.className = "admin-btn";
                 adminBtn.innerText = "Admin Panel";
                 adminBtn.onclick = () => window.location.href = "admin.html";
-                // Log Out-un yanına əlavə et
+                
                 logOutBtn.parentNode.insertBefore(adminBtn, logOutBtn);
             }
         }
@@ -45,8 +45,8 @@ function updateUI() {
 async function sendContact(event) {
     event.preventDefault();
     
-    // HTML-dəki inputların dəyərlərini götürürük
-    // QEYD: HTML-də inputlara id="contactName", id="contactEmail" və s. əlavə etməlisən
+    
+    
     const request = {
         name: document.getElementById("contactName").value,
         email: document.getElementById("contactEmail").value,
@@ -63,7 +63,7 @@ async function sendContact(event) {
 
         if (response.ok) {
             alert("Mesajınız uğurla bazaya düşdü!");
-            document.querySelector(".inputss").reset(); // Formu təmizlə
+            document.querySelector(".inputss").reset(); 
         }
     } catch (error) {
         console.error("Xəta:", error);
