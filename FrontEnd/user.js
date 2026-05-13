@@ -10,7 +10,7 @@ async function getUser() {
     const token = JSON.parse(userData)?.accessToken;
 
     try {
-        const response = await fetch("http://localhost:8080/api/customers/profile", {
+        const response = await fetch("http:
             method: "GET",
             headers: { "Authorization": "Bearer " + token }
         });
@@ -45,11 +45,11 @@ function out() {
     document.querySelector(".logOut").style.display = "none";
     document.querySelector(".logIn").style.display = "inline";
     
-    // Çıxışdan sonra ana səhifəyə yönləndirmək yaxşı olar
+
     window.location.href = "./index.html";
 }
 
-// Digər opens, openss, cart funksiyaların olduğu kimi qala bilər
+
 function opens() {
     window.open("./login.html")
 }

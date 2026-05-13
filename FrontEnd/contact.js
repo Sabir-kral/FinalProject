@@ -55,7 +55,7 @@ async function sendContact(event) {
     };
 
     try {
-        const response = await fetch("http://localhost:8080/api/contact/send", {
+        const response = await fetch("http:
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(request)

@@ -14,6 +14,16 @@ function previewImage(event) {
 
 async function create(event) {
     event.preventDefault();
+
+    const userDataString = localStorage.getItem("activeUser");
+    if (!userDataString) {
+        alert("Sizin giriş icazəniz yoxdur. Zəhmət olmasa login olun.");
+        return;
+    }
+
+    const userData = JSON.parse(userDataString);
+    const token = userData.accessToken; 
+
     const fileInput = document.getElementById("image-file");
     const resultDiv = document.getElementById("result");
 
@@ -24,19 +34,21 @@ async function create(event) {
 
     try {
         resultDiv.innerText = "Yüklənir...";
-        
+        resultDiv.style.color = "blue";
 
         const formData = new FormData();
         formData.append("file", fileInput.files[0]);
 
         const fileResponse = await fetch("http://localhost:8080/api/files/upload", {
             method: "POST",
+            headers: {
+                "Authorization": "Bearer " + token
+            },
             body: formData
         });
 
         if (!fileResponse.ok) throw new Error("Şəkil yüklənə bilmədi.");
         const uploadedImageName = await fileResponse.text();
-
 
         const requestData = {
             brand: document.getElementById("brand").value,
@@ -50,7 +62,10 @@ async function create(event) {
 
         const response = await fetch("http://localhost:8080/api/products/add", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: { 
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token
+            },
             body: JSON.stringify(requestData)
         });
 

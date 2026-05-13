@@ -4,22 +4,22 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    color: #fff; 
+    color: 
 }
 
 body {
-    background-color: #8B0000; 
-    color: #fff; 
+    background-color: 
+    color: 
     line-height: 1.6;
 }
 
 
 header {
-    background-color: #B22222; 
+    background-color: 
     padding: 15px 0;
     text-align: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    color: #fff;
+    color: 
 }
 
 
@@ -27,14 +27,14 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #fff; 
+    background-color: 
     padding: 10px 30px;
-    color: #B22222; 
+    color: 
     border-radius: 10px;
 }
 
 nav h2, .logo {
-    color: #B22222;
+    color: 
     font-size: 24px;
     font-weight: bold;
 }
@@ -46,7 +46,7 @@ nav h2, .logo {
 }
 
 .nav-links li a {
-    color: #B22222;
+    color: 
     text-decoration: none;
     padding: 8px 12px;
     border-radius: 5px;
@@ -54,13 +54,13 @@ nav h2, .logo {
 }
 
 .nav-links li a:hover {
-    background-color: #B22222;
-    color: #fff;
+    background-color: 
+    color: 
 }
 
 .shop-btn {
-    background-color: #B22222;
-    color: #fff;
+    background-color: 
+    color: 
     padding: 6px 14px;
     border: none;
     border-radius: 8px;
@@ -69,20 +69,20 @@ nav h2, .logo {
 }
 
 .shop-btn:hover {
-    background-color: #800000;
+    background-color: 
 }
 
 
 .user-actions input, .nav-links input {
     padding: 6px 10px;
-    border: 1px solid #B22222;
+    border: 1px solid 
     border-radius: 5px;
-    background-color: #fff;
-    color: #B22222;
+    background-color: 
+    color: 
 }
 
 .search-btn, .login-btn {
-    background-color: #B22222;
+    background-color: 
     color: white;
     border: none;
     padding: 6px 14px;
@@ -92,22 +92,22 @@ nav h2, .logo {
 }
 
 .search-btn:hover, .login-btn:hover {
-    background-color: #800000;
+    background-color: 
 }
 
 .logout {
-    background-color: #ff4d4d; 
+    background-color: 
 }
 
 .logout:hover {
-    background-color: #cc0000;
+    background-color: 
 }
 
 
 .cart {
     width: 80%;
     margin: 20px auto;
-    background-color: #B22222;
+    background-color: 
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -116,14 +116,14 @@ nav h2, .logo {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #8B0000;
+    background-color: 
 }
 
 th, td {
     padding: 12px;
     text-align: center;
-    border-bottom: 1px solid #fff;
-    color: #fff;
+    border-bottom: 1px solid 
+    color: 
 }
 
 img {
@@ -134,14 +134,14 @@ img {
 .quantity {
     width: 50px;
     text-align: center;
-    background-color: #fff;
-    color: #B22222;
+    background-color: 
+    color: 
     border-radius: 5px;
-    border: 1px solid #B22222;
+    border: 1px solid 
 }
 
 .remove {
-    background-color: #cc0000;
+    background-color: 
     color: white;
     border: none;
     padding: 6px 12px;
@@ -151,7 +151,7 @@ img {
 }
 
 .remove:hover {
-    background-color: #800000;
+    background-color: 
 }
 
 
@@ -164,7 +164,7 @@ img {
 }
 
 .billing-details, .payment-details {
-    background: #B22222;
+    background: 
     padding: 25px;
     border-radius: 15px;
     width: 48%;
@@ -175,16 +175,16 @@ form label {
     display: block;
     margin-top: 10px;
     font-size: 15px;
-    color: #fff;
+    color: 
 }
 
 form input, form select {
     width: 100%;
     padding: 10px;
     margin-top: 8px;
-    background-color: #fff;
-    color: #B22222;
-    border: 1px solid #800000;
+    background-color: 
+    color: 
+    border: 1px solid 
     border-radius: 8px;
 }
 
@@ -206,16 +206,16 @@ form input, form select {
 .summary {
     margin-top: 25px;
     padding: 20px;
-    background-color: #800000;
+    background-color: 
     color: white;
     border-radius: 15px;
     font-size: 18px;
 }
 
-#place-order, #checkout {
+
     width: 100%;
     padding: 15px;
-    background-color: #cc0000;
+    background-color: 
     color: white;
     border: none;
     cursor: pointer;
@@ -224,13 +224,13 @@ form input, form select {
     transition: background-color 0.3s ease;
 }
 
-#place-order:hover, #checkout:hover {
-    background-color: #800000;
+
+    background-color: 
 }
 
 
 footer {
-    background: #B22222;
+    background: 
     color: white;
     padding: 30px;
     display: flex;
@@ -257,9 +257,9 @@ input[type="email"] {
     border: none;
     border-radius: 8px;
     width: 100%;
-    background-color: #fff;
-    color: #B22222;
-    border: 1px solid #B22222;
+    background-color: 
+    color: 
+    border: 1px solid 
 }
 .iki{
     color: black;

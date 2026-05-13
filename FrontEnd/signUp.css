@@ -3,13 +3,13 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #330000;    
-  color: #ffcccc;               
+  background-color: 
+  color: 
 }
 
 header {
-  background: #4d0000;          
-  color: #ff9999;               
+  background: 
+  color: 
   text-align: center;
   padding: 5px 0;
 }
@@ -52,7 +52,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: #660000;          
+  background: 
   box-shadow: 0 2px 10px rgba(102, 0, 0, 0.8);
 }
 nav p{
@@ -64,7 +64,7 @@ ul {
   padding: 0;
 }
 button {
-  background: #990000;
+  background: 
   color: white;
   padding: 5px 15px;
   border-radius: 5px;
@@ -74,12 +74,12 @@ button {
 }
 
 button:hover {
-  background: #cc0000;
+  background: 
 }
 
 footer {
-  background: #4d0000;
-  color: #ff9999;
+  background: 
+  color: 
   padding: 30px;
   display: flex;
   justify-content: space-around;
@@ -105,13 +105,13 @@ input[type="email"] {
   border: none;
   border-radius: 5px;
   width: 100%;
-  background-color: #660000;
-  color: #ffcccc;
-  border: 1px solid #cc0000;
+  background-color: 
+  color: 
+  border: 1px solid 
 }
 
 .logOut {
-  background-color: #990000;
+  background-color: 
   border-radius: 5px;
   padding: 10px;
   color: white;
@@ -122,7 +122,7 @@ input[type="email"] {
 }
 
 .logOut:hover {
-  background-color: #cc0000;
+  background-color: 
 }
 
 
@@ -139,7 +139,7 @@ input[type="email"] {
 }
   .f button {
     width: 15vw;
-    background-color: #DB4444;
+    background-color: 
     color: white;
     border: none;
     border-radius: 0.2vw;
@@ -157,23 +157,23 @@ input[type="email"] {
     width: 30vw;
     margin: 1.5vw auto;
     padding: 1vw 1.2vw;
-    border: 2px solid #DB4444;
+    border: 2px solid 
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(219, 68, 68, 0.3);
     font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     outline: none;
-    background-color: #fff;
+    background-color: 
 }
 
 .f input:focus {
-    border-color: #a32f2f;
+    border-color: 
     box-shadow: 0 0 12px rgba(219, 68, 68, 0.6);
-    background-color: #fff8f8;
+    background-color: 
 }
 footer {
-  background: #4d0000;
-  color: #ffcccc;
+  background: 
+  color: 
   padding: 30px;
   display: flex;
   justify-content: space-around;
@@ -183,7 +183,7 @@ footer {
 
 .footer-section h3 {
   margin-bottom: 10px;
-  color: #ff9999;
+  color: 
 }
 
 .footer-section ul {
@@ -193,7 +193,7 @@ footer {
 
 .footer-section ul li {
   margin: 5px 0;
-  color: #ffcccc;
+  color: 
 }
 
 footer input[type="email"] {
@@ -201,9 +201,9 @@ footer input[type="email"] {
   border: none;
   border-radius: 5px;
   width: 100%;
-  background-color: #660000;
-  color: #ffcccc;
-  border: 1px solid #cc3333;
+  background-color: 
+  color: 
+  border: 1px solid 
 }
 .footer-section ul{
   display: flex;

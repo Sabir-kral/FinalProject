@@ -1,81 +1,34 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let user = JSON.parse(localStorage.getItem("activeUser"));
-    if (!user) {
-        alert("Zəhmət olmasa daxil olun!");
-        return;
-    }
-
-    let cartKey = `cart_${user.username}`;
-    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
-
-    const cartContainer = document.getElementById("cart-items");
-    const subtotalElement = document.getElementById("subtotal-price");
-    const totalElement = document.getElementById("total-price");
-
-    function renderCart() {
-        cartContainer.innerHTML = "";
-        let total = 0;
-
-        if (cart.length === 0) {
-            cartContainer.innerHTML = `<tr><td colspan="6">Səbət boşdur.</td></tr>`;
-            subtotalElement.textContent = "0$";
-            totalElement.textContent = "0$";
+async function fetchCart() {
+    try {
+        const userData = JSON.parse(localStorage.getItem("activeUser"));
+        
+        if (!userData || !userData.accessToken) {
+            console.error("Giriş məlumatları tapılmadı!");
             return;
         }
 
-        cart.forEach((product, index) => {
-            total += product.price * product.quantity;
-
-            const row = document.createElement("tr");
-            row.innerHTML = `
-                <td><img src="${product.image}" width="50"></td>
-                <td>${product.brand} ${product.model}</td>
-                <td>${product.price} $</td>
-                <td>
-                    <input type="number" class="quantity-input" data-index="${index}" min="1" max="15" value="${product.quantity}">
-                </td>
-                <td>${(product.price * product.quantity).toFixed(2)} $</td>
-                <td><button class="remove-btn" data-index="${index}">X</button></td>
-            `;
-            cartContainer.appendChild(row);
-
+        const response = await fetch("http://localhost:8080/api/cart", {
+            method: "GET",
+            headers: { 
+                "Authorization": `Bearer ${userData.accessToken}`,
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
         });
 
-        subtotalElement.textContent = `${total.toFixed(2)}$`;
-        totalElement.textContent = `${total.toFixed(2)}$`;
-    }
-
-    document.getElementById("cart-items").addEventListener("input", function (event) {
-        if (event.target.classList.contains("quantity-input")) {
-            let index = parseInt(event.target.dataset.index);
-            let newQuantity = parseInt(event.target.value);
-            
-            if (isNaN(newQuantity) || newQuantity < 1) {
-                newQuantity = 1;
-            } else if (newQuantity > 15) {
-                newQuantity = 15;
-            }
-
-            cart[index].quantity = newQuantity;
-            updateCart();
+        if (response.status === 403) {
+            console.error("403 Forbidden: Sizin bu məlumatı görməyə icazəniz yoxdur (Rol problemi).");
+            return;
         }
-    });
 
-    document.getElementById("cart-items").addEventListener("click", function (event) {
-        const index = parseInt(event.target.dataset.index);
-        if (event.target.classList.contains("remove-btn")) removeFromCart(index);
-    });
-
-    function removeFromCart(index) {
-        cart.splice(index, 1);
-        updateCart();
+        if (response.ok) {
+            const cartItems = await response.json();
+            renderCart(cartItems);
+        } else {
+            console.error("Səbət yüklənmədi. Status:", response.status);
+        }
+    } catch (error) {
+        console.error("Xəta baş verdi:", error);
     }
-
-    function updateCart() {
-        localStorage.setItem(cartKey, JSON.stringify(cart));
-        renderCart();
-    }
-
-    renderCart();
-});
-
+}
+fetchCart()

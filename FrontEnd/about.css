@@ -3,13 +3,13 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-color: #330000;    
-  color: #ffcccc;               
+  background-color: 
+  color: 
 }
 
 header {
-  background: #4d0000;          
-  color: #ff9999;               
+  background: 
+  color: 
   text-align: center;
   padding: 5px 0;
 }
@@ -52,7 +52,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: #660000;          
+  background: 
   box-shadow: 0 2px 10px rgba(102, 0, 0, 0.8);
 }
 nav p{
@@ -65,7 +65,7 @@ ul {
 }
 
 .shop-btn {
-  background: #990000;          
+  background: 
   color: white;
   padding: 5px 15px;
   border-radius: 5px;
@@ -75,15 +75,15 @@ ul {
 }
 
 .shop-btn:hover {
-  background: #cc0000;          
+  background: 
 }
 
-#bir {
+
   width: 400px;
 }
 
 button {
-  background: #990000;
+  background: 
   color: white;
   padding: 5px 15px;
   border-radius: 5px;
@@ -93,12 +93,12 @@ button {
 }
 
 button:hover {
-  background: #cc0000;
+  background: 
 }
 
 footer {
-  background: #4d0000;
-  color: #ff9999;
+  background: 
+  color: 
   padding: 30px;
   display: flex;
   justify-content: space-around;
@@ -124,13 +124,13 @@ input[type="email"] {
   border: none;
   border-radius: 5px;
   width: 100%;
-  background-color: #660000;
-  color: #ffcccc;
-  border: 1px solid #cc0000;
+  background-color: 
+  color: 
+  border: 1px solid 
 }
 
 .logOut {
-  background-color: #990000;
+  background-color: 
   border-radius: 5px;
   padding: 10px;
   color: white;
@@ -141,7 +141,7 @@ input[type="email"] {
 }
 
 .logOut:hover {
-  background-color: #cc0000;
+  background-color: 
 }
 
 .item {
@@ -156,11 +156,11 @@ input[type="email"] {
 .product-page {
   width: 90%;
   margin: auto;
-  background: #330000;
+  background: 
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(153, 0, 0, 0.8);
-  color: #ffcccc;
+  color: 
 }
 
 .product-container {
@@ -178,25 +178,25 @@ input[type="email"] {
 }
 
 .rating {
-  color: #ff6600; 
+  color: 
 }
 
 .stock {
-  color: #66bb6a; 
+  color: 
 }
 
 .price {
   font-size: 24px;
   font-weight: bold;
-  color: #ff9999;
+  color: 
 }
 
 .description {
-  color: #ffb3b3;
+  color: 
 }
 
 .add-to-cart {
-  background: #990000;
+  background: 
   color: white;
   border: none;
   padding: 10px 20px;
@@ -207,19 +207,19 @@ input[type="email"] {
 }
 
 .add-to-cart:hover {
-  background: #cc0000;
+  background: 
 }
 
 .delivery-info {
   margin-top: 20px;
-  background: #660000;
+  background: 
   padding: 10px;
   border-radius: 5px;
-  color: #ff9999;
+  color: 
 }
 
 .delivery-info a {
-  color: #cc0000;
+  color: 
   text-decoration: none;
 }
 
@@ -229,7 +229,7 @@ input[type="email"] {
 
 .bi {
   font-size: 30px;
-  color: #ff9999;
+  color: 
 }
 .emily{
   box-shadow: 29px 28px 44px 0px rgba(0, 0, 0, 0.3);
@@ -243,7 +243,7 @@ top: 15vw;
 .sarah{
   box-shadow: 29px 28px 44px 0px rgba(0, 0, 0, 0.3);
   width: 20vw;
-  background-color: #E07575;
+  background-color: 
   height: fit-content;
   margin: 2vw;
   position: relative;
@@ -296,7 +296,7 @@ top: 15vw;
   bottom: 30vw;
 }
 .iPhone{
-  background-color: #211C24;
+  background-color: 
   width: 93vw;
   color: white;
   position: relative;
@@ -312,7 +312,7 @@ top: 15vw;
 }
 h2{
   text-align: center;
-  color: #DB4444 !important;
+  color: 
 }
 .name {
   display: none;
@@ -326,7 +326,7 @@ h2{
   text-align: center;
   margin-bottom: 2vw;
   font-size: 2.5vw;
-  color: #DB4444;
+  color: 
 }
 
 .about-content {
@@ -343,7 +343,7 @@ h2{
 
 .texts h2 {
   margin-bottom: 1vw;
-  color: #DB4444;
+  color: 
 }
 
 .texts p {
@@ -381,8 +381,8 @@ h2{
 }
 
 footer {
-  background: #4d0000;
-  color: #ffcccc;
+  background: 
+  color: 
   padding: 30px;
   display: flex;
   justify-content: space-around;
@@ -392,7 +392,7 @@ footer {
 
 .footer-section h3 {
   margin-bottom: 10px;
-  color: #ff9999;
+  color: 
 }
 
 .footer-section ul {
@@ -402,7 +402,7 @@ footer {
 
 .footer-section ul li {
   margin: 5px 0;
-  color: #ffcccc;
+  color: 
 }
 
 input[type="email"] {
@@ -410,9 +410,9 @@ input[type="email"] {
   border: none;
   border-radius: 5px;
   width: 100%;
-  background-color: #660000;
-  color: #ffcccc;
-  border: 1px solid #cc3333;
+  background-color: 
+  color: 
+  border: 1px solid 
 }
 .footer-section ul{
   display: flex;

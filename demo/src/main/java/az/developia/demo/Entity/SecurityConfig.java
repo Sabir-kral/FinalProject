@@ -34,34 +34,34 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .cors(cors -> cors.configurationSource(request -> {
                     var corsConfiguration = new CorsConfiguration();
-                    corsConfiguration.setAllowedOrigins(List.of("http://127.0.0.1:5501"));
+                    corsConfiguration.setAllowedOrigins(List.of("http://127.0.0.1:5501", "http://localhost:5501"));
                     corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
                     corsConfiguration.setAllowedHeaders(List.of("*"));
                     corsConfiguration.setAllowCredentials(true);
                     return corsConfiguration;
                 }))
                 .authorizeHttpRequests(auth -> auth
-
                         .requestMatchers("/api/auth/login", "/api/customers/register").permitAll()
 
+                        
+                        .requestMatchers(HttpMethod.GET, "/api/products/all").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/categories").permitAll()
+                        .requestMatchers("/uploads/**").permitAll()
 
                         .requestMatchers("/api/files/**", "/images/**", "/static/**").permitAll()
+                        .requestMatchers("/api/cart/**").hasAuthority("ROLE_CUSTOMER")
                         .requestMatchers(permitAllUrls).permitAll()
-
 
                         .requestMatchers(HttpMethod.GET, "/api/contact/all").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/api/customers/admin/**").hasAuthority("ROLE_ADMIN")
-
 
                         .requestMatchers("/api/campaigns/**").hasAuthority("ROLE_SELLER")
                         .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAuthority("ROLE_SELLER")
                         .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAuthority("ROLE_SELLER")
                         .requestMatchers(HttpMethod.GET, "/api/products/my-products").hasAuthority("ROLE_SELLER")
 
-
                         .requestMatchers(HttpMethod.POST, "/api/contact/send").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/products/add").permitAll()
-
+                        .requestMatchers(HttpMethod.POST, "/api/products/add").authenticated() 
 
                         .anyRequest().authenticated())
 
@@ -73,7 +73,6 @@ public class SecurityConfig {
 
         return http.build();
     }
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();

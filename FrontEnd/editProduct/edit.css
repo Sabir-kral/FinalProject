@@ -2,8 +2,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: #660000; 
-    color: #f9dcdc; 
+    background: 
+    color: 
 }
 
 
@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
- background: #660000; 
+ background: 
     padding: 15px 50px;
     color:white ;
     gap: 50px;
@@ -21,7 +21,7 @@ body {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #991b1b;
+    color: 
 }
 
 .nav-links {
@@ -46,7 +46,7 @@ body {
 
 .nav-links a:hover {
     text-decoration: underline;
-    color: #7f1d1d;
+    color: 
 }
 
 .nav-right {
@@ -57,18 +57,18 @@ body {
 
 .search-box {
     padding: 8px;
-    border: 1px solid #b91c1c;
+    border: 1px solid 
     border-radius: 8px;
     font-size: 14px;
-    background: #ffffff;
-    color: #7f1d1d;
+    background: 
+    color: 
 }
 
 .login-btn {
-    background: #ffffff;
-    color: #991b1b;
+    background: 
+    color: 
     padding: 8px 15px;
-    border: 1px solid #991b1b;
+    border: 1px solid 
     font-size: 14px;
     cursor: pointer;
     border-radius: 8px;
@@ -77,13 +77,13 @@ body {
 }
 
 .login-btn:hover {
-    background: #f8d7da;
+    background: 
 }
 
 .container {
     width: 50%;
     margin: 30px auto;
-    background: #ffffff;
+    background: 
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(159, 27, 27, 0.1);
@@ -92,7 +92,7 @@ body {
 .title {
     text-align: center;
     margin-bottom: 20px;
-    color: #991b1b;
+    color: 
 }
 
 form {
@@ -103,24 +103,24 @@ form {
 label {
     font-weight: bold;
     margin-top: 10px;
-    color: #991b1b;
+    color: 
 }
 
 input,
 textarea {
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #b91c1c;
+    border: 1px solid 
     border-radius: 8px;
     font-size: 16px;
-    background-color: #fef2f2;
-    color: #7f1d1d;
+    background-color: 
+    color: 
     transition: border 0.2s ease;
 }
 
 input:focus,
 textarea:focus {
-    border-color: #991b1b;
+    border-color: 
     outline: none;
 }
 
@@ -150,19 +150,19 @@ textarea:focus {
 }
 
 .save-btn {
-    background: #7f1d1d; 
+    background: 
     color: white;
 }
 
 .save-btn:hover {
-    background: #991b1b;
+    background: 
 }
 
 .reset-btn {
-    background: #b91c1c; 
+    background: 
     color: white;
 }
 
 .reset-btn:hover {
-    background: #7f1d1d;
+    background: 
 }

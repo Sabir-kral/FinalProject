@@ -28,46 +28,37 @@ public class ProductService {
 
     @Transactional
     public ProductResponse addProduct(ProductRequest request) {
-        System.out.println("Gələn məlumat: " + request.getBrand());
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity user = userRepo.findByUsername(username)
                 .orElseThrow(() -> new CustomException("İstifadəçi tapılmadı", "Bad request", 400));
 
-        
         ProductEntity productEntity = new ProductEntity();
         productEntity.setBrand(request.getBrand());
-        productEntity.setModel(request.getModel()); 
+        productEntity.setModel(request.getModel());
         productEntity.setDescription(request.getDescription());
         productEntity.setPrice(request.getPrice());
         productEntity.setRating(request.getRating());
         productEntity.setImage(request.getImage());
         productEntity.setUser(user);
 
-
-        if (request.getCategoryName() != null) {
+        if (request.getCategoryName() != null && !request.getCategoryName().isEmpty()) {
             CategoryEntity category = categoryRepo.findByNameIgnoreCase(request.getCategoryName())
                     .orElseGet(() -> {
                         CategoryEntity newCategory = new CategoryEntity();
                         newCategory.setName(request.getCategoryName());
                         return categoryRepo.save(newCategory);
                     });
-
+            productEntity.setCategory(category);
         }
-        
-        productRepo.save(productEntity);
-        ProductEntity saved = productRepo.save(productEntity);
-        System.out.println("Məhsul bazaya yazıldı, ID: " + saved.getId());
 
-        
         boolean isAlreadySeller = user.getRoles().stream()
                 .anyMatch(role -> role.getName().equals("ROLE_SELLER"));
         if (!isAlreadySeller) {
             roleRepo.assignSellerRoles(user.getId());
         }
-        productRepo.save(productEntity);
-        System.out.println("succesfully saved"+productEntity);
 
-        return ProductMapper.toDTO(productEntity);
+        ProductEntity saved = productRepo.save(productEntity);
+        return ProductMapper.toDTO(saved);
     }
 
 //    public List<ProductEntity> getFilteredProducts(String name, String category, Integer rating,

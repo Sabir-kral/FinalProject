@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         productTable.innerHTML = ""; 
         const user = localStorage.getItem("activeUser")
         const token = JSON.parse(user)?.accessToken;
-        const response = await fetch("http://localhost:8080/api/products/my-products",{
+        const response = await fetch("http:
             headers:{"Authorization": "Bearer " + token}
         })
 
