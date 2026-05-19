@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.security.authentication.AuthenticationManager;
 
 import java.util.List;
 
@@ -42,26 +42,34 @@ public class SecurityConfig {
                 }))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/login", "/api/customers/register").permitAll()
-
-                        
+                        .requestMatchers("/api/files/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/products/all").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/categories").permitAll()
+
+                        // Sifariş endpointləri giriş etmiş istifadəçilər (Müştərilər) üçün aktiv edilir
+                        .requestMatchers("/api/orders/convert-from-cart").authenticated()
+                        .requestMatchers("/api/orders/active").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/orders/*/complete").permitAll()
+
                         .requestMatchers("/uploads/**").permitAll()
-
-                        .requestMatchers("/api/files/**", "/images/**", "/static/**").permitAll()
-                        .requestMatchers("/api/cart/**").hasAuthority("ROLE_CUSTOMER")
+                        .requestMatchers("/api/files/download/**").permitAll()
+                        .requestMatchers("/images/**", "/static/**").permitAll()
                         .requestMatchers(permitAllUrls).permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/contact/send").permitAll()
 
+                        .requestMatchers(HttpMethod.GET, "/api/customers/profile").authenticated()
+                        .requestMatchers(HttpMethod.PUT, "/api/customers/profile").authenticated()
+                        .requestMatchers(HttpMethod.DELETE, "/api/customers/profile").authenticated()
+
+                        .requestMatchers("/api/cart/**").hasAuthority("ROLE_CUSTOMER")
                         .requestMatchers(HttpMethod.GET, "/api/contact/all").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/api/customers/admin/**").hasAuthority("ROLE_ADMIN")
-
+                        .requestMatchers("/api/customers/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/api/campaigns/**").hasAuthority("ROLE_SELLER")
-                        .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAuthority("ROLE_SELLER")
-                        .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAuthority("ROLE_SELLER")
+                        .requestMatchers(HttpMethod.PUT, "/api/products/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SELLER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/products/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_SELLER","ROLE_CUSTOMER")
                         .requestMatchers(HttpMethod.GET, "/api/products/my-products").hasAuthority("ROLE_SELLER")
-
-                        .requestMatchers(HttpMethod.POST, "/api/contact/send").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/products/add").authenticated() 
+                        .requestMatchers(HttpMethod.POST, "/api/products/add").authenticated()
 
                         .anyRequest().authenticated())
 
@@ -73,6 +81,7 @@ public class SecurityConfig {
 
         return http.build();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();

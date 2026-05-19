@@ -2,8 +2,8 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: 
-    color: 
+    background: #660000; 
+    color: #f9dcdc; 
 }
 
 
@@ -11,7 +11,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
- background: 
+ background: #660000; 
     padding: 15px 50px;
     color:white ;
     gap: 50px;
@@ -21,7 +21,7 @@ body {
 .logo {
     font-size: 24px;
     font-weight: bold;
-    color: 
+    color: #991b1b;
 }
 
 .nav-links {
@@ -31,6 +31,7 @@ body {
     padding: 0;
     margin: 0;
 }
+
 
 .nav-links li {
     display: inline;
@@ -46,7 +47,7 @@ body {
 
 .nav-links a:hover {
     text-decoration: underline;
-    color: 
+    color: #7f1d1d;
 }
 
 .nav-right {
@@ -57,18 +58,18 @@ body {
 
 .search-box {
     padding: 8px;
-    border: 1px solid 
+    border: 1px solid #b91c1c;
     border-radius: 8px;
     font-size: 14px;
-    background: 
-    color: 
+    background: #ffffff;
+    color: #7f1d1d;
 }
 
 .login-btn {
-    background: 
-    color: 
+    background: #ffffff;
+    color: #991b1b;
     padding: 8px 15px;
-    border: 1px solid 
+    border: 1px solid #991b1b;
     font-size: 14px;
     cursor: pointer;
     border-radius: 8px;
@@ -77,13 +78,13 @@ body {
 }
 
 .login-btn:hover {
-    background: 
+    background: #f8d7da;
 }
 
 .container {
     width: 50%;
     margin: 30px auto;
-    background: 
+    background: #ffffff;
     padding: 25px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(159, 27, 27, 0.1);
@@ -92,7 +93,7 @@ body {
 .title {
     text-align: center;
     margin-bottom: 20px;
-    color: 
+    color: #991b1b;
 }
 
 form {
@@ -103,24 +104,24 @@ form {
 label {
     font-weight: bold;
     margin-top: 10px;
-    color: 
+    color: #991b1b;
 }
 
 input,
 textarea {
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid 
+    border: 1px solid #b91c1c;
     border-radius: 8px;
     font-size: 16px;
-    background-color: 
-    color: 
+    background-color: #fef2f2;
+    color: #7f1d1d;
     transition: border 0.2s ease;
 }
 
 input:focus,
 textarea:focus {
-    border-color: 
+    border-color: #991b1b;
     outline: none;
 }
 
@@ -150,19 +151,24 @@ textarea:focus {
 }
 
 .save-btn {
-    background: 
+    background: #7f1d1d; 
     color: white;
 }
 
 .save-btn:hover {
-    background: 
+    background: #991b1b;
 }
 
 .reset-btn {
-    background: 
+    background: #b91c1c; 
     color: white;
 }
 
 .reset-btn:hover {
-    background: 
+    background: #7f1d1d;
+}
+input, textarea, select {
+    outline: none;
+    transition: border 0.3s ease;
+    border: 2px solid red; /* Başlanğıcda hamısı qırmızı */
 }

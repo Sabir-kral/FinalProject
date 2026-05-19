@@ -35,16 +35,22 @@ public class FileController {
         }
     }
 
-    @GetMapping("/{filename:.+}")
+    // FileController.java daxilində
+    @GetMapping({"/download/{filename:.+}", "/{filename:.+}"}) // Hər iki yolu qəbul edir
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
         try {
             Path file = root.resolve(filename);
             Resource resource = new UrlResource(file.toUri());
+
+            String contentType = Files.probeContentType(file);
+            if (contentType == null) contentType = "image/jpeg";
+
             return ResponseEntity.ok()
-                    .contentType(MediaType.IMAGE_JPEG)
+                    .contentType(MediaType.parseMediaType(contentType))
                     .body(resource);
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
     }
+
 }

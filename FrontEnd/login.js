@@ -8,7 +8,7 @@ async function login(event) {
         username:username.value,
         password:password.value
     }
-    const response = await fetch("http:
+    const response = await fetch("http://localhost:8080/api/auth/login",{
         method:"POST",
         headers: {"Content-Type":"application/json"},
         body:JSON.stringify(request)

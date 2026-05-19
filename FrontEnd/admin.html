@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <h2 class="logo">Exclusive <span>Admin Control</span></h2>
+        <div class="admin-menu">
+            <button onclick="showSection('products')">Məhsullar</button>
+            <button onclick="showSection('users')">İstifadəçilər</button>
+            <button onclick="showSection('contacts')">Kontaktlar</button>
+            <button id="logout-btn" onclick="logOut()">Çıxış</button>
+        </div>
+    </nav>
+
+    <!-- 1. Siyahı Bölmələri -->
+    <div id="main-content" class="admin-container">
+        <!-- Məhsullar -->
+        <section id="products-section" class="admin-section">
+            <header><h1>Bütün Məhsullar</h1></header>
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead><tr><th>ID</th><th>Şəkil</th><th>Brend</th><th>Qiymət</th><th>Əməliyyatlar</th></tr></thead>
+                    <tbody id="product-list"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- İstifadəçilər -->
+        <section id="users-section" class="admin-section" style="display:none;">
+            <header><h1>İstifadəçilər</h1></header>
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Rol</th><th>Əməliyyatlar</th></tr></thead>
+                    <tbody id="user-list"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Kontaktlar -->
+        <section id="contacts-section" class="admin-section" style="display:none;">
+            <header><h1>Kontakt Mesajları</h1></header>
+            <div class="table-wrapper">
+                <table class="admin-table">
+                    <thead><tr><th>ID</th><th>Ad</th><th>Email</th><th>Əməliyyatlar</th></tr></thead>
+                    <tbody id="contact-list"></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <!-- 2. Detal Bölməsi (FindById üçün) -->
+<div id="details-view" style="display:none;">
+    <h2 id="details-title"></h2>
+    <div id="details-content"></div>
+    <button onclick="goBack()">Geri</button>
+</div>
+
+<div id="edit-view" style="display:none; background: #222; padding: 20px; border-radius: 10px;">
+    </div>
+    <div id="result"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

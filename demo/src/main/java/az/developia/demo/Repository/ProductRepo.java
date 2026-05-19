@@ -34,4 +34,7 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Long> , JpaSpe
             @Param("minPrice") Double minPrice,
             @Param("maxPrice") Double maxPrice,
             Sort sort);
+
+    void deleteByUserId(Long userId);
+    List<ProductEntity> findByUserId(Long userId);
 }

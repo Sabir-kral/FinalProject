@@ -25,6 +25,7 @@ public class ProductService {
     private final CategoryRepo categoryRepo;
     private final RoleRepo roleRepo;
     private final UserRepo userRepo;
+    private final CartRepository cartRepository;
 
     @Transactional
     public ProductResponse addProduct(ProductRequest request) {
@@ -112,10 +113,13 @@ public class ProductService {
         return ProductMapper.toDTO(productRepo.save(productEntity));
     }
 
-    public void deleteProduct(Long id) {
-        ProductEntity product = productRepo.findById(id)
-                .orElseThrow(() -> new RuntimeException("Məhsul tapılmadı"));
-        productRepo.delete(product);
+    @Transactional
+    public void deleteProduct(Long productId) {
+        // 1. Əvvəlcə bu məhsulun olduğu bütün səbətləri silirik
+        cartRepository.deleteByProductId(productId);
+
+        // 2. Sonra məhsulun özünü silirik
+        productRepo.deleteById(productId);
     }
 
     private void mapRequestToEntity(ProductRequest request, ProductEntity productEntity) {

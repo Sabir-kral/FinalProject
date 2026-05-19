@@ -6,6 +6,7 @@ import az.developia.demo.Mapper.CustomerMapper;
 import az.developia.demo.Repository.CustomerRepo;
 import az.developia.demo.Repository.RoleRepo;
 import az.developia.demo.Repository.UserRepo;
+import az.developia.demo.Repository.ProductRepo;
 import az.developia.demo.Request.CustomerRequest;
 import az.developia.demo.Response.CustomerResponse;
 import az.developia.demo.Response.MessageResponse;
@@ -25,10 +26,10 @@ public class CustomerService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
+    private final ProductRepo productRepo;
 
-    @Transactional 
+    @Transactional
     public CustomerResponse register(CustomerRequest request) {
-
         userService.isUserExists(request.getUsername());
         UserEntity user = new UserEntity();
         user.setUsername(request.getUsername());
@@ -44,7 +45,6 @@ public class CustomerService {
         customer.setUser(savedUser);
 
         CustomerEntity savedCustomer = repo.save(customer);
-
         roleRepo.assignCustomerRoles(savedUser.getId());
 
         return CustomerMapper.toDTO(savedCustomer);
@@ -57,9 +57,14 @@ public class CustomerService {
                 .orElseThrow(() -> new RuntimeException("Customer Not Found"));
 
         UserEntity user = customer.getUser();
-        roleRepo.deleteByUserId(user.getId());
+        if (user != null) {
+            roleRepo.deleteByUserId(user.getId());
+            productRepo.deleteByUserId(user.getId());
+        }
         repo.delete(customer);
-        userRepo.delete(user);
+        if (user != null) {
+            userRepo.delete(user);
+        }
     }
 
     @Transactional
@@ -90,13 +95,80 @@ public class CustomerService {
         return messageResponse;
     }
 
+    @Transactional
+    public void deleteById(Long id) {
+        CustomerEntity customer = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("İstifadəçi tapılmadı: ID " + id));
+
+        try {
+            UserEntity user = customer.getUser();
+
+            if (user != null) {
+                // Əlaqəli bütün asılılıqları (rollar və məhsullar) təmizləyirik
+                roleRepo.deleteByUserId(user.getId());
+                productRepo.deleteByUserId(user.getId());
+            }
+
+            repo.delete(customer);
+
+            if (user != null) {
+                userRepo.delete(user);
+            }
+
+            repo.flush();
+        } catch (Exception e) {
+            throw new RuntimeException("Silinmə zamanı xəta: " + e.getMessage());
+        }
+    }
+
+    @Transactional
+    public MessageResponse updateCustomerByAdmin(Long id, CustomerRequest request) {
+        CustomerEntity customer = repo.findById(id)
+                .orElseThrow(() -> new RuntimeException("İstifadəçi tapılmadı: ID " + id));
+
+        UserEntity userEntity = customer.getUser();
+
+        if (request.getUsername() != null) {
+            customer.setUsername(request.getUsername());
+            if (userEntity != null) {
+                userEntity.setUsername(request.getUsername());
+            }
+        }
+        if (request.getEmail() != null) {
+            customer.setEmail(request.getEmail());
+        }
+        if (request.getName() != null) {
+            customer.setName(request.getName());
+        }
+        if (request.getSurname() != null) {
+            customer.setSurname(request.getSurname());
+        }
+
+        if (request.getPassword() != null && !request.getPassword().isEmpty()) {
+            String encodedPass = passwordEncoder.encode(request.getPassword());
+            customer.setPassword(encodedPass);
+            if (userEntity != null) {
+                userEntity.setPassword(encodedPass);
+            }
+        }
+
+        repo.save(customer);
+        if (userEntity != null) {
+            userRepo.save(userEntity);
+        }
+
+        MessageResponse messageResponse = new MessageResponse();
+        messageResponse.setMessage("İstifadəçi uğurla yeniləndi");
+        return messageResponse;
+    }
+
     public CustomerResponse profile(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         CustomerEntity customer = repo.findByUsername(username).orElseThrow(()->new RuntimeException("Not Found"));
         return CustomerMapper.toDTO(customer);
     }
+
     public List<CustomerResponse> getAll(){
         return CustomerMapper.toDTOList(repo.findAll());
     }
-
 }

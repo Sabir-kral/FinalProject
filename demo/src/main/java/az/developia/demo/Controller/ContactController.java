@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/contact")
+@RequestMapping("/api/contact") // JS-də də buna uyğun yazmalıyıq
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class ContactController {
@@ -26,5 +26,20 @@ public class ContactController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<ContactMessage> getAllMessages() {
         return contactRepo.findAllByOrderBySentAtDesc();
+    }
+
+    // JS-də üstünə basanda işləməsi üçün findById
+    @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<ContactMessage> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(contactRepo.findById(id).orElseThrow());
+    }
+
+    // Silmə düyməsi üçün
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<Void> deleteContact(@PathVariable Long id) {
+        contactRepo.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

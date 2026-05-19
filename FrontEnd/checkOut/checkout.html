@@ -8,7 +8,7 @@
 </head>
 <body>
 
-   <header>
+    <header>
         <nav>
             <h2>E-commerce</h2>
             <ul>
@@ -19,77 +19,68 @@
                 <li><a href="../shop/shop.html" class="shop-btn">Shop</a></li>
             </ul>
             <input type="text" placeholder="What are you looking for?">
-         
         </nav>
     </header>
-    <section class="checkout-container">
-        <div class="billing-details">
-            <h2>Billing Details</h2>
-            <form id="checkout-form">
-                <label>First Name</label>
-                <input class="bir" type="text" required>
+
+    <form id="checkout-form">
+        <section class="checkout-container">
+            <div class="billing-details">
+                <h2>Billing Details</h2>
                 
-                <label>Last Name</label>
-                <input class="bir"  type="text" required>
+                <label for="firstName">First Name</label>
+                <input class="bir" id="firstName" type="text" required placeholder="John">
                 
-                <label>State</label>
-                <select required>
-                    <option>Choose...</option>
-                    <option>State 1</option>
-                    <option>State 2</option>
+                <label for="lastName">Last Name</label>
+                <input class="bir" id="lastName" type="text" required placeholder="Doe">
+                
+                <label for="state">State</label>
+                <select id="state" required>
+                    <option value="">Choose...</option>
+                    <option value="state1">State 1</option>
+                    <option value="state2">State 2</option>
                 </select>
                 
-                <label>City</label>
-                <input class="bir"  type="text" required>
+                <label for="city">City</label>
+                <input class="bir" id="city" type="text" required placeholder="Baku">
 
-                <label>Address</label>
-                <input class="bir"  type="text" required>
+                <label for="address">Address</label>
+                <input class="bir" id="address" type="text" required placeholder="Nizami str. 45">
 
-                <label>Zip</label>
-                <input class="bir"  type="text" required>
+                <label for="zip">Zip</label>
+                <input class="bir" id="zip" type="text" required placeholder="AZ1000">
 
-                <label>Tel</label>
-                <input class="bir"  type="text" required>
+                <label for="tel">Tel</label>
+                <input class="bir" id="tel" type="tel" required placeholder="+994">
 
-                <label>Email</label>
-                <input class="bir"  type="email" required>
+                <label for="email">Email</label>
+                <input class="bir" id="email" type="email" required placeholder="example@gmail.com">
+            </div>
 
-   
-            </form>
-        </div>
-
-        <div class="payment-details">
-            <h2>Payment</h2>
-            <div class="cards">
-
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAllBMVEX
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASMAAACtCAMAAADMM+kDAAABAlBMVEX/ABj/qhj
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAAkFBMVEX
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAACoCAMAAABt9SM9AAAA6lBMVEX
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASMAAACtCAMAAADMM+kDAAABpFBMVEXMAAEAZsv
-                    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxATEBAQERASExAQDRUXERERFRIQFhAWFhcYGBgVGBUYHigkHRolHRcVITEjJSkrLi46GCszODMsNygtLisBCgoKDg0OGhAQGyslICI3Ny0tLS0tLSsvLS0rMC0wLystLSsrLS0tLS0tLS0tLS0vLS0tLS0tLS0tLSstKy0vLf/AABEIAMcA/QMBEQACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAAAgMGBwEEBQj/xABOEAACAQIBBQkMBwUGBgMAAAABAgADBBEFBgchNRIxQVFUYXKxsxM0cXN0gZGSk8HR0hUWIjJSdaEUI0KisjZEYoKDhRczU2Ph8SQlQ
-                  
+            <div class="payment-details">
+                <h2>Payment</h2>
+                <div class="cards">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASw..." alt="card">
+                </div>
                 
-            </div>
-            <label>Card Number</label>
-            <input class="iki"  type="text" required>
-            
-            <div class="card-info">
-                <input class="bir"  type="number" placeholder="MM" required>
-                <input class="bir"  type="number" placeholder="YY" required>
-                <input class="bir"  type="number" placeholder="CVC" required>
-            </div>
+                <label for="cardNumber">Card Number</label>
+                <input class="iki" id="cardNumber" type="text" pattern="\d{16}" minlength="16" maxlength="16" placeholder="1234567812345678" required>
+                
+                <div class="card-info">
+                    <input class="bir" type="number" min="1" max="12" placeholder="MM" required>
+                    <input class="bir" type="number" min="26" max="35" placeholder="YY" required>
+                    <input class="bir" type="number" min="100" max="999" placeholder="CVC" required>
+                </div>
 
-            <div class="summary">
-                <p>Subtotal: <span id="subtotal">0$</span></p>
-                <p>Shipping: <span>FREE</span></p>
-                <p>Total: <span id="total-price">0$</span></p>
-                <input type="submit" id="place-order">
+                <div class="summary">
+                    <p>Subtotal: <span id="subtotal">0$</span></p>
+                    <p>Shipping: <span>FREE</span></p>
+                    <p>Total: <span id="total-price">0$</span></p>
+                    <button type="submit" id="place-order" class="save-btn" style="width: 100%; padding: 12px; background: #ff4d4d; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold;">Place Order</button>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
 
     <script src="checkout.js"></script>
 </body>
 </html>
-

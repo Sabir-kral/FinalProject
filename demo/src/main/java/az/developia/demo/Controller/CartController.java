@@ -1,11 +1,14 @@
 package az.developia.demo.Controller;
 
 import az.developia.demo.Entity.CartEntity;
+import az.developia.demo.Response.CartResponse;
 import az.developia.demo.Service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -24,8 +27,23 @@ public class CartController {
     }
 
     @GetMapping("/my-cart")
-    public ResponseEntity<List<CartEntity>> getMyCart() {
+    public ResponseEntity<List<CartResponse>> getMyCart() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return ResponseEntity.ok(cartService.getUserCart(username));
+    }
+    // Səbətdə say tənzimləmə
+    @PutMapping("/update")
+    public ResponseEntity<?> updateQuantity(@RequestParam Long productId,
+                                            @RequestParam Integer quantity,
+                                            Principal principal) {
+        cartService.updateQuantity(productId, quantity, principal.getName());
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/remove")
+    public ResponseEntity<?> removeFromCart(@RequestParam Long productId,
+                                            Principal principal) {
+        cartService.removeItem(productId, principal.getName());
+        return ResponseEntity.ok().build();
     }
 }

@@ -31,6 +31,9 @@ public class ProductEntity {
     @JsonIgnore
     private CategoryEntity category;
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private List<CartEntity> carts;
+
     
     @ManyToOne
     @JoinColumn(name = "user_id")

@@ -6,7 +6,6 @@ import az.developia.demo.Response.MessageResponse;
 import az.developia.demo.Service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,5 +41,19 @@ public class CustomerController {
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     public List<CustomerResponse> getAllCustomers() {
         return customerService.getAll();
+    }
+
+    // SİLME - URL dəqiqləşdirildi
+    @DeleteMapping("/admin/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public void deleteCustomerByAdmin(@PathVariable Long id) {
+        customerService.deleteById(id);
+    }
+
+    // YENİLƏMƏ - URL dəqiqləşdirildi
+    @PutMapping("/admin/{id}")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public MessageResponse updateCustomerByAdmin(@PathVariable Long id, @RequestBody CustomerRequest request) {
+        return customerService.updateCustomerByAdmin(id, request);
     }
 }

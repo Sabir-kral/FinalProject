@@ -3,13 +3,13 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: 
-    color: 
+    background-color: #330000;    
+    color: #ffcccc;               
 }
 
 .top-bar {
-    background: 
-    color: 
+    background: #4d0000;          
+    color: #ff9999;               
     text-align: center;
     padding: 5px 0;
 }
@@ -19,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 40px;
-    background: 
+    background: #660000;          
     box-shadow: 0 2px 10px rgba(102, 0, 0, 0.8);
 }
 
@@ -38,17 +38,17 @@ ul {
 
 .nav-links a {
     text-decoration: none;
-    color: 
+    color: #ff9999;
     font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: 
+    color: #ff4d4d; 
 }
 
 .shop-btn {
-    background: 
+    background: #990000;          
     color: white;
     padding: 5px 15px;
     border-radius: 5px;
@@ -58,15 +58,15 @@ ul {
 }
 
 .shop-btn:hover {
-    background: 
+    background: #cc0000;          
 }
 
-
+#bir {
     width: 400px;
 }
 
 button {
-    background: 
+    background: #990000;
     color: white;
     padding: 5px 15px;
     border-radius: 5px;
@@ -76,12 +76,12 @@ button {
 }
 
 button:hover {
-    background: 
+    background: #cc0000;
 }
 
 footer {
-    background: 
-    color: 
+    background: #4d0000;
+    color: #ff9999;
     padding: 30px;
     display: flex;
     justify-content: space-around;
@@ -107,13 +107,13 @@ input[type="email"] {
     border: none;
     border-radius: 5px;
     width: 100%;
-    background-color: 
-    color: 
-    border: 1px solid 
+    background-color: #660000;
+    color: #ffcccc;
+    border: 1px solid #cc0000;
 }
 
 .logout {
-    background-color: 
+    background-color: #990000;
     border-radius: 5px;
     padding: 10px;
     color: white;
@@ -124,7 +124,7 @@ input[type="email"] {
 }
 
 .logout:hover {
-    background-color: 
+    background-color: #cc0000;
 }
 
 .item {
@@ -139,11 +139,11 @@ input[type="email"] {
 .product-page {
     width: 90%;
     margin: auto;
-    background: 
+    background: #330000;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(153, 0, 0, 0.8);
-    color: 
+    color: #ffcccc;
 }
 
 .product-container {
@@ -161,25 +161,25 @@ input[type="email"] {
 }
 
 .rating {
-    color: 
+    color: #ff6600; 
 }
 
 .stock {
-    color: 
+    color: #66bb6a; 
 }
 
 .price {
     font-size: 24px;
     font-weight: bold;
-    color: 
+    color: #ff9999;
 }
 
 .description {
-    color: 
+    color: #ffb3b3;
 }
 
 .add-to-cart {
-    background: 
+    background: #990000;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -190,19 +190,19 @@ input[type="email"] {
 }
 
 .add-to-cart:hover {
-    background: 
+    background: #cc0000;
 }
 
 .delivery-info {
     margin-top: 20px;
-    background: 
+    background: #660000;
     padding: 10px;
     border-radius: 5px;
-    color: 
+    color: #ff9999;
 }
 
 .delivery-info a {
-    color: 
+    color: #cc0000;
     text-decoration: none;
 }
 
@@ -212,5 +212,5 @@ input[type="email"] {
 
 .bi {
     font-size: 30px;
-    color: 
+    color: #ff9999;
 }

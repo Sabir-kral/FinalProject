@@ -2,97 +2,97 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background: 
-    color: 
+    background-color: #7a0c0c; /* Şəkildəki tünd qırmızı/bordo fon */
+    color: #333;
 }
 
-
+/* Sənin istədiyin kimi qara olmayan, zərif tünd qırmızı fonlu modern navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
- background: 
-    padding: 15px 50px;
-    color:white ;
-    gap: 50px;
-    box-shadow: 0 2px 6px rgba(159, 27, 27, 0.2);
+    background-color: #5e0808; /* Navbara özəl bir az daha tünd bordo rəng */
+    padding: 15px 80px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: bold;
-    color: 
+    color: #ff4d4d; /* "Exclusive" loqosunun qırmızı rəngi */
+    margin: 0;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
     padding: 0;
     margin: 0;
 }
 
-.nav-links li {
-    display: inline;
-}
-
 .nav-links a {
     text-decoration: none;
- color: white;
+    color: white;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
-    color: 
+    color: #ff4d4d;
 }
 
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .search-box {
-    padding: 8px;
-    border: 1px solid 
-    border-radius: 8px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
     font-size: 14px;
-    background: 
-    color: 
+    outline: none;
+    width: 180px;
 }
 
 .login-btn {
-    background: 
-    color: 
-    padding: 8px 15px;
-    border: 1px solid 
+    background: transparent;
+    color: white;
+    padding: 8px 20px;
+    border: 1px solid white;
     font-size: 14px;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: bold;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .login-btn:hover {
-    background: 
+    background-color: white;
+    color: #5e0808;
 }
 
+/* Şəkildəki ortalanmış Ağ Blok (Container) */
 .container {
-    width: 50%;
-    margin: 30px auto;
-    background: 
-    padding: 25px;
+    width: 100%;
+    max-width: 650px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(159, 27, 27, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
 }
 
 .title {
     text-align: center;
-    margin-bottom: 20px;
-    color: 
+    margin-bottom: 30px;
+    color: #7a0c0c;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 form {
@@ -102,67 +102,74 @@ form {
 
 label {
     font-weight: bold;
-    margin-top: 10px;
-    color: 
+    margin-top: 15px;
+    color: #7a0c0c;
+    font-size: 14px;
 }
 
-input,
+/* Şəkildəki qırmızı çərçivəli giriş sahələri */
+input[type="text"],
+input[type="number"],
 textarea {
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid 
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: 
-    color: 
-    transition: border 0.2s ease;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ff4d4d; /* Şəkildəki qırmızı border */
+    border-radius: 6px;
+    font-size: 15px;
+    background-color: #fff8f8; /* Çox açıq qırmızımtıl yumşaq fon */
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
 }
 
 input:focus,
 textarea:focus {
-    border-color: 
-    outline: none;
+    border-color: #7a0c0c;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(122, 12, 12, 0.2);
 }
 
-.preview {
-    text-align: center;
-    margin: 20px 0;
+textarea {
+    resize: vertical;
+    min-height: 80px;
 }
 
-.preview img {
-    width: 150px;
-    height: auto;
-    display: none;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(159, 27, 27, 0.1);
+/* Şəkildəki fayl seçmə dizaynı */
+.file-upload-wrapper {
+    margin-top: 6px;
+    padding: 10px;
+    border: 1px solid #ff4d4d;
+    border-radius: 6px;
+    background-color: #fff8f8;
 }
 
+/* Şəkildəki Tünd Qəhvəyi/Bordo Düymələr */
 .save-btn,
 .reset-btn {
-    padding: 10px;
+    padding: 12px;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
-    border-radius: 8px;
+    margin-top: 15px;
+    border-radius: 6px;
     font-weight: bold;
+    color: white;
     transition: background-color 0.3s ease;
 }
 
 .save-btn {
-    background: 
-    color: white;
+    background-color: #5a1111; /* Şəkildəki tünd buton rəngi */
 }
 
 .save-btn:hover {
-    background: 
+    background-color: #420b0b;
 }
 
 .reset-btn {
-    background: 
-    color: white;
+    background-color: #a82424; /* Sıfırla düyməsinin qırmızı tonu */
 }
 
 .reset-btn:hover {
-    background: 
+    background-color: #8c1c1c;
 }

@@ -81,3 +81,65 @@ async function create(event) {
         resultDiv.innerText = error.message;
     }
 }
+// İnputların rəngini dəyişən funksiya
+
+
+// Şəkil önizləmə
+function setupInputValidation() {
+    // HTML-də formun ID-si "product-form" olduğu üçün onu burda düzəltdik
+    const form = document.getElementById("product-form");
+    if (!form) return;
+
+    const inputs = form.querySelectorAll("input, textarea, select");
+
+    inputs.forEach(input => {
+        const checkValue = () => {
+            // Şəkil seçmə inputu (file) üçün border məntiqi previewImage-dədir
+            if (input.type === "file") return;
+
+            if (input.value.trim() !== "") {
+                input.style.border = "2px solid green";
+                input.style.outline = "none"; // Qara çərçivəni itirmək üçün
+            } else {
+                input.style.border = "2px solid red";
+                input.style.outline = "none";
+            }
+        };
+
+        // Hadisələri dinləyirik
+        input.addEventListener("input", checkValue);
+        input.addEventListener("change", checkValue);
+        input.addEventListener("blur", checkValue);
+
+        // Səhifə açılan kimi mövcud vəziyyəti yoxla
+        checkValue();
+    });
+}
+
+// Şəkil önizləmə və onun borderi
+function previewImage(event) {
+    const reader = new FileReader();
+    const fileInput = document.getElementById("image-file");
+    
+    reader.onload = function() {
+        const output = document.getElementById('preview-image');
+        if (output) {
+            output.src = reader.result;
+            output.style.display = 'block';
+            // Şəkil uğurla seçilibsə yaşıl et
+            fileInput.style.border = "2px solid green";
+        }
+    };
+    
+    if (event.target.files[0]) {
+        reader.readAsDataURL(event.target.files[0]);
+    } else {
+        fileInput.style.border = "2px solid red";
+    }
+}
+
+// Səhifə yüklənəndə funksiyanı işə salırıq
+document.addEventListener("DOMContentLoaded", setupInputValidation);
+
+// Məhsul yaratma funksiyan (create) eyni qala bilər, 
+// sadəcə yuxarıdakı setupInputValidation-u əlavə etməyin kifayətdir.
